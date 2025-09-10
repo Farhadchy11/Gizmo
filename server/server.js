@@ -6,10 +6,10 @@ import cors from "cors";
 app.use(cors());
 app.use(express.json());
 const PORT = 5050;
-import Stripe from "stripe";
+//import Stripe from "stripe";
 
 
-const stripe = new Stripe(stripe_key);
+//const stripe = new Stripe(stripe_key);
 
 const key = "farhad@$";
 
