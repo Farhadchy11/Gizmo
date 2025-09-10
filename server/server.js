@@ -9,7 +9,7 @@ const PORT = 5050;
 import Stripe from "stripe";
 
 
-const stripe = new Stripe(process.env.STRIPE_KEY);
+const stripe = new Stripe(stripe_key);
 
 const key = "farhad@$";
 
