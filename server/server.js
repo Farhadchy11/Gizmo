@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import { MongoClient, ServerApiVersion } from "mongodb";
-//import Stripe from "stripe";
+
 
 const app = express();
 import cors from "cors";
@@ -9,9 +9,7 @@ app.use(cors());
 app.use(express.json());
 const PORT = 5050;
 
-// const stripe = new Stripe(
-//   "sk_test_51RabRoB0vFsStBB9Z1aLtmEbmsSjG5EabJZXbmrK6TK4CC5RQ4bRFE8Qt2GS6YXJJAJ8qN7SoSnkPQ1hZKwTngtr00f78RPBpm"
-// );
+
 
 const key = "farhad@$";
 
