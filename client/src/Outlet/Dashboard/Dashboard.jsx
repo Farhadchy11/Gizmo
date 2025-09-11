@@ -1,127 +1,44 @@
-//import { AuthContext } from "../../Providers/AuthProvider.jsx";
-//import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider.jsx";
+import { useContext } from "react";
+import { MdDashboard, MdPayment } from "react-icons/md";
+import { FiHome, FiSettings, FiLogOut } from "react-icons/fi";
+import { BsFillCartCheckFill } from "react-icons/bs";
+import {
+  FaDiceD6,
+  FaMoneyCheckAlt,
+  FaShoppingCart,
+  FaUser,
+} from "react-icons/fa";
 //import { useState, useEffect } from "react";
 import useAdmin from "../../Hooks/useAdmin.jsx";
-//import { Link } from "react-router-dom";
+
 import { Link, Outlet } from "react-router-dom";
-//import axiosSecure from "../../Hooks/useAxiosSecure.jsx";
-//import axios from "axios";
 
-const Sidebar = () => {//
+const Sidebar = () => {
   const { isAdmin } = useAdmin();
+  const { user, logOut } = useContext(AuthContext);
 
-  // const { user } = useAuthContext();
-  // console.log("User sidebar:", user);
-  // const [isAdmin, setIsAdmin] = useState(false);
-  // console.log("admin:", isAdmin);
-
-  // axios.interceptors.request.use(
-  //   (config) => {
-  //     const token = localStorage.getItem("access-token");
-  //     console.log(token);
-  //     if (token) {
-  //       config.headers.Authorization = `Bearer ${token}`;
-  //     }
-  //     return config;
-  //   },
-  //   (error) => {
-  //     return Promise.reject(error);
-  //   }
-  // );
-
-  //admin true sucess
-  // const senddataadmin = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:5050/user/admin/${user.email}`
-  //     );
-  //     const userData = response.data;
-  //     setIsAdmin(userData.admin);
-  //     console.log(userData);
-  //   } catch (error) {
-  //     console.log("Error fetching data:");
-  //   }
-  // };
-
-  // const checkAdminStatus = async () => {
-  //   try {
-  //     const response = await axiosSecure.get(
-  //       `http://localhost:5050/user/admin/${user.email}`
-  //     );
-  //     //const userData = response.data;
-  //     setIsAdmin(response.data.admin);
-  //     console.log("Admin status:", response.data.admin);
-  //     // return res.data?.admin
-  //   } catch (err) {
-  //     console.log("Error checking admin status:", err);
-  //   }
-  // };
-
-  //  const checkAdminStatus = async () => {
-  //    try {
-  //     const response = await axiosSecure.get(
-  //       `http://localhost:5050/user/admin/${user.email}`
-  //     );
-  //     //const userData = response.data;
-  //      setIsAdmin(response.data.admin);
-  //      console.log("Admin status:", response.data.admin);
-  //      // return res.data?.admin
-  //    } catch (err) {
-  //      console.log("Error checking admin status:", err);
-  //    }
-  //  };
-
-  //  useEffect(() => {
-  //  const checkAdminStatus = async () => {
-  //    try {
-
-  // const timer = setTimeout(() => {
-
-  //         const response = await axios.get(
-  //           `http://localhost:5050/user/admin/${user.email}`
-  //           );
-  //           //const userData = response.data;
-  //            setIsAdmin(response.data.admin);
-  //           console.log("Admin status:", response.data.admin);// Action to perform after the delay
-  //       }, 2000);
-
-  //         const response = await axios.get(
-  //           `http://localhost:5050/user/admin/${user.email}`
-  //           );
-  //           //const userData = response.data;
-  //            setIsAdmin(response.data.admin);
-  //           console.log("Admin status:", response.data.admin);
-  //           // return res.data?.admin
-  //          } catch (err) {
-  //            console.log("Error checking admin status:", err);
-  //         }
-  //        };
-
-  //       checkAdminStatus();
-  //     }, []);
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        console.log("User logged out");
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
+  };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex items-center flex-col gap-3 p-3 bg-black text-white min-h-screen">
       <Link to={"/"}>
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-          Dashboard
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+          <MdDashboard /> Dashboard
         </h2>
       </Link>
-      {/* <button
-        onClick={senddataadmin}
-        className="bg-blue-500 text-white p-2 rounded"
-      >
-        senddataadmin
-      </button> */}
+
       <ul className="space-y-4">
         {isAdmin ? (
           <>
-            {/* <Link
-              to={"/dashboard/Admindash"}
-              className="flex items-center gap-3 p-3 hover:bg-gray-800 rounded cursor-pointer"
-            >
-              Admin
-            </Link> */}
             <Link
               to={"/dashboard/allUsers"}
               className="flex items-center gap-3 p-3 hover:bg-gray-800 rounded cursor-pointer"
@@ -132,40 +49,52 @@ const Sidebar = () => {//
         ) : (
           <>
             <Link
-              to={"/dashboard/Prtc"}
+              to={"/dashboard/UserHome"}
               className="flex items-center gap-3 p-3 hover:bg-gray-800 rounded cursor-pointer"
             >
-              Prtc user
+              <FiHome /> Home || User
             </Link>
+
             <Link
-              to={"/dashboard/payments"}
-              className="flex items-center gap-3 p-3 hover:bg-gray-800 rounded cursor-pointer"
+              class="flex items-center gap-3 p-3 hover:bg-gray-800 rounded cursor-pointer"
+              to={"/cart"}
             >
-              Payments
+              {" "}
+              <FaShoppingCart />
+              Your Order Products
             </Link>
           </>
         )}
-        <li>
-          <Link to={"/dashboard/usercontrol"}>User Control</Link>
-        </li>
-      </ul>
 
-      <h1>sidebar</h1>
+        {user ? (
+          <div className="">
+            <li
+              onClick={handleLogout}
+              className="flex items-center gap-3 p-3 hover:bg-gray-800 rounded cursor-pointer text-red-400"
+            >
+              <FiLogOut /> Logout
+            </li>
+          </div>
+        ) : (
+          <Link
+            to="/loginForm"
+            className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
+          >
+            <span>Login</span>
+          </Link>
+        )}
+      </ul>
     </div>
   );
 };
 
 const Dashboard = () => {
-  //const [isOpen, setIsOpen] = useState(false);
-  //const toggleSidebar = () => setIsOpen(!isOpen);
-
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <div className="flex-1 md:ml-64 p-6 transition-all">
+      <div className="flex-1 p-6 transition-all">
         <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-500">
           <Outlet />
-          <h1>Dashboard Content</h1>
         </div>
       </div>
     </div>

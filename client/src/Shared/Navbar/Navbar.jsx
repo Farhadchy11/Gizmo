@@ -2,66 +2,21 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-//import { AuthContext } from "../Providers/AuthProvider.jsx";
 import { AuthContext } from "../../Providers/AuthProvider.jsx";
-//import Cart from "../components/Cart/Cart.jsx";
-//import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  //  const [scrolled, setScrolled] = useState(true);
-  // console.log(user);
-  //console.log("User logged in navbar:", user);
-  //  const navigate = useNavigate();
-  //  const [searchTerm, setSearchTerm] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // navigate('/search');
-  //   navigate(`/search/${searchTerm}`);
-  //   setSearchTerm("");
-  // };
 
   const handleLogout = () => {
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   text: "Do you really want to logout?",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3b82f6",
-    //   cancelButtonColor: "#ef4444",
-    //   confirmButtonText: "Yes, Logout",
-    //   cancelButtonText: "Cancel",
-    //   background: theme === 'dark' ? '#1f2937' : '#ffffff',
-    //   color: theme === 'dark' ? '#ffffff' : '#000000',
-    // }).then((result) => {
-    //if (result.isConfirmed) {
     logOut()
       .then(() => {
-        // Swal.fire({
-        //   title: "Logged Out!",
-        //   text: "You have successfully logged out.",
-        //   icon: "success",
-        //   confirmButtonColor: "#3b82f6",
-        //   background: theme === 'dark' ? '#1f2937' : '#ffffff',
-        //   color: theme === 'dark' ? '#ffffff' : '#000000',
-        // });
         console.log("User logged out");
       })
       .catch((error) => {
-        // Swal.fire({
-        //   title: "Logout Failed!",
-        //   text: error.message,
-        //   icon: "error",
-        //   confirmButtonColor: "#ef4444",
-        //   background: theme === 'dark' ? '#1f2937' : '#ffffff',
-        //   color: theme === 'dark' ? '#ffffff' : '#000000',
-        // });
         console.error("Logout error:", error);
       });
   };
-  //  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -94,7 +49,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center py-4 ">
             <Link to={"/"} className="group flex items-center ">
               <div className="relative">
-                <h1 className=" text-white-500 text-xl font-bold"> TechT</h1>
+                <h1 className=" text-white-500 text-3xl font-bold">Gizmo</h1>
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-red-500/20 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </Link>
@@ -174,12 +129,12 @@ const Navbar = () => {
         </div>
 
         {/* Backdrop for mobile menu */}
-         {isOpen && (
+        {isOpen && (
           <div
             class="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-[-1]"
             onClick={() => setIsOpen(false)}
           ></div>
-        )} 
+        )}
       </nav>
     </>
   );

@@ -11,16 +11,15 @@ const ProductItems = ({ pd }) => {
       price,
       title,
       description,
-      imgSrc
+      imgSrc,
     };
 
     dispatch(addToCart(obj));
   };
-  //container grid grid-cols-3 grid-rows-3 gap-4
   return (
     <div
       key={pd.id}
-      class="mx-auto border border-gray-300 shadow-md bg-white pb-5 "
+      class="mx-auto border border-gray-300 shadow-md bg-white sm:pb-5 "
     >
       <Link
         to={`/product/${pd.id}`}
@@ -30,18 +29,18 @@ const ProductItems = ({ pd }) => {
           alignItems: "center",
         }}
       >
-        <img src={pd.imgSrc} class=" max-h-55 mx-auto  object-scale-down " />
+        <img src={pd.imgSrc} class=" max-h-50 mx-auto  object-scale-down " />
       </Link>
-      <div class="text-center px-5 text-black mx-auto">
-        <h3 class="text-lg font-medium">{pd.title}</h3>
-        <p class="text-base">{pd.description}</p>
-        <button class="text-base  ">${pd.price}</button>
+      <div class="text-center mt-10 px-5 text-black mx-auto">
+        <h3 class="text-lg font-medium mb-1">{pd.title}</h3>
+        <p class="text-base mb-1">{pd.description}</p>
+        <button class="text-base font-bold mb-1 ">${pd.price}</button>
         <br />
         <button
           onClick={() =>
             addToWishList(pd.id, pd.price, pd.title, pd.description, pd.imgSrc)
           }
-          class="text-center"
+          class="text-center px-4 bg-black text-white "
         >
           Add To Cart
         </button>

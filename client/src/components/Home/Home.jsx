@@ -1,34 +1,32 @@
-//import React from "react";
 //import Homeproducts from "../Product/Homeproducts.jsx";
-//import Categories from "./Categories/Categories.jsx";
-//import "./home.css";
+import Categories from "./Categories/Categories.jsx";
 import Banner from "./Banner/Banner.jsx";
 import BannerTwo from "./BannerTwo/BannerTwo.jsx";
-import TrendingProducts from "./Collections/TrendingProducts.jsx";
+import TrendingProducts from "./TrendingProducts/TrendingProducts.jsx";
 import DiscountBanner from "./Discount/DiscountBanner.jsx";
 import CustomerFeedback from "./CustomerFeedback/CustomerFeedback.jsx";
 import Partners from "./Partners/Partners.jsx";
 
 const Home = () => {
   return (
-    <div class="w-screen">
+    <div class="">
       <Banner />
-      {/* <div className="w-screen">
+      <div className="">
         <Categories />
-      </div> */}
-      <div className="w-screen">
+      </div>
+      <div className="">
         <BannerTwo />
       </div>
-      <div className="w-screen">
+      <div className="">
         <TrendingProducts />
       </div>
-      <div className="w-screen">
+      <div className="">
         <DiscountBanner />
       </div>
-      <div className="w-screen">
+      <div className="">
         <CustomerFeedback />
       </div>
-      <div className="w-screen">
+      <div className="">
         <Partners />
       </div>
     </div>

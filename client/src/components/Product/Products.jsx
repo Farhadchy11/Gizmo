@@ -1,34 +1,16 @@
 import { useEffect, useState } from "react";
-// import { Helmet } from 'react-helmet';
-// import { AiOutlineHeart } from "react-icons/ai";
-// import { useParams } from 'react-router-dom';
-// import Productsitem from '../../../../Sheard/ProductsItem';
 import { items } from "../Data/Data.jsx";
 import ProductItems from "./ProductItems.jsx";
+
+
 const Products = () => {
   const [products, setProducts] = useState([...items]);
   const [categories, setCategories] = useState(["all"]);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [priceLimit, setPriceLimit] = useState(30000);
-  // const { category } = useParams(); // URL থেকে ক্যাটাগরি নেওয়া
-  console.log(selectedCategory);
-  console.log(search);
-  // ক্যাটাগরি URL থেকে পেয়ে সেট করা
-  // useEffect(() => {
-  //     if (category) {
-  //         setSelectedCategory((category)); // URL থেকে ক্যাটাগরি পেয়ে সেট করা
-  //     }
-  // }, [category]);
-
-  // Filtered products
-  //   const filteredProducts = products.filter( (product) => (product.category === selectedCategory)
-  //   );
 
   useEffect(() => {
-    // const uniqueCategories = {products.map(pd => pd.category)};
-    //                 setCategories(uniqueCategories);
-
     const uniqueCategories = [
       "All",
       ...new Set(products.map((pd) => pd.category)),

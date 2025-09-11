@@ -1,67 +1,21 @@
+import { useState } from "react";
+import { TrendingProducts } from "../../Data/TrendingProductsData.jsx";
+import ProductItems from "../../Product/ProductItems.jsx";
+const Mobiles = () => {
+const [products, setProducts] = useState([...TrendingProducts]);
 
-
-
-const TrendingProducts = () => {
-
-    // const [products, setProducts] = useState([...MobilesData]);
-    // console.log(products)
-    //  const [categories, setCategories] = useState(['all']);
-    //  const [selectedCategory, setSelectedCategory] = useState("All");
-    // const [priceLimit, setPriceLimit] = useState(30000);
-
-    //  useEffect(() => {
-
-    //      setCategories(uniqueCategories);
-
-    //    const uniqueCategories = ["All", ...new Set(products.map((pd) => pd.brand))];
-    //      setCategories(uniqueCategories);
-    //  }, []);
-
-
-    // const filteredProducts = products.filter(product =>
-    //     (selectedCategory === 'All' || product.brand === selectedCategory))
-    //  &&  product.price <= priceLimit)
-
-    // && product.title.toLowerCase().includes(search.toLowerCase()) // Search functionality
-
-
-    // p-4 max-w-6xl mx-auto mt-28
-    return (
-        <>
-            <div className=" flex flex-row bg-black">
-
-                {/* md:col-span-1 p-4 rounded-lg */}
-
-                {/* <div className="">
-                    <h2 className="font-bold mb-2">Categories</h2>
-                    <ul>
-                        {categories.map((cat) => (
-                            <li
-                                key={cat}
-                                onClick={() => setSelectedCategory(cat)}
-                            >
-                                {cat}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-
-                <div className="flex flex-row">
-
-                    {filteredProducts.map((pd) => (
-                        <ProductItems pd={pd} />
-                    ))}
-
-                </div> */}
-
-                <h1>TrendingProducts</h1>
-            </div>
-        </>
-
-    );
+  return (
+    <>
+      <div class=" bg-black text-white  sm:px-5 pt-20">
+        <h1 class=" text-lg sm:text-2xl text-center mb-10">TRENDING PRODUCTS </h1>
+        <div className="flex flex-col mx-auto sm:gap-4 sm:flex-row sm:gap-y-0  gap-y-5">
+          {products.map((pd) => (
+            <ProductItems pd={pd} />
+          ))}
+        </div>
+      </div>
+    </>
+  );
 };
 
-export default TrendingProducts;
-
-
+export default Mobiles;

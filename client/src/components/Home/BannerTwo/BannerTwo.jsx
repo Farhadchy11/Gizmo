@@ -1,11 +1,10 @@
-//import { AiOutlineShoppingCart, AiOutlineArrowRight } from "react-icons/ai";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import offerOne from "../img/sub-banner-1.webp";
 import offerTwo from "../img/sub-banner-2.webp";
 
 const Banner = () => {
   return (
-    <div class="grid h-[21.25rem] bg-black sm:grid-cols-2 sm:pb-12 gap-5 px-3">
+    <div class="grid h-[21.25rem] bg-black sm:grid-cols-2 gap-5 px-3">
       <div
         className=" flex  items-center py-4 sm:py-0  bg-cover bg-center bg-no-repeat  sm:object-contain "
         style={{ backgroundImage: `url(${offerOne})` }}
@@ -24,9 +23,11 @@ const Banner = () => {
             HD Lenses
           </span>
           <br />
-          <button class="text-sm font-normal  border-b border-black-400">
-            SHOP NOW{" "}
-          </button>
+          <Link to={"/Products"} class="">
+            <button class="text-sm font-normal  border-b border-black-400">
+              SHOP NOW{" "}
+            </button>
+          </Link>
         </div>
       </div>
       <div
@@ -47,13 +48,12 @@ const Banner = () => {
             Smartphon
           </span>
           <br />
-          <button class="text-sm font-normal  border-b border-black-400">
-            SHOP NOW{" "}
-          </button>
+          <Link to={"/Products"} class="">
+            <button class="text-sm font-normal  border-b border-black-400">
+              SHOP NOW{" "}
+            </button>
+          </Link>
         </div>
-
-        <h3></h3>
-        <h1> </h1>
       </div>
     </div>
   );

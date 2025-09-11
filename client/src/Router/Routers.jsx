@@ -2,19 +2,15 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../components/Home/Home.jsx";
 import RegisterForm from "../components/RegisterForm/RegisterForm.jsx";
 import LoginForm from "../components/LoginForm/LoginForm.jsx";
-import Homeproducts from "../components/Product/Homeproducts.jsx";
 import Products from "../components/Product/Products.jsx";
 import Categories from "../components/Home/Categories/Categories.jsx";
-//import Categories from "../components/Home/Categories/Categories.jsx";
-import Mobiles from "../components/Home/Collections/Mobiles.jsx";
 import Cart from "../components/Cart/Cart.jsx";
 import Payment from "../components/Payment/Payment.jsx";
-import Prtc from "../components/prtc/prtc.jsx";
+import UserHome from "../components/Dashboard/UserHome/UserHome.jsx";
 import AllUsers from "../Outlet/Dashboard/Allusers.jsx";
 import Admindash from "../components/Admindash/Admindash.jsx";
 import Outlet from "../Outlet/Outlet.jsx";
 import Dashboard from "../Outlet/Dashboard/Dashboard.jsx";
-
 
 const Routers = createBrowserRouter([
   {
@@ -30,14 +26,6 @@ const Routers = createBrowserRouter([
         element: <LoginForm></LoginForm>,
       },
       {
-        path: "/Homeproducts",
-        element: <Homeproducts></Homeproducts>,
-      },
-      {
-        path: "/Homeproducts",
-        element: <Homeproducts></Homeproducts>,
-      },
-      {
         path: "/Products",
         element: <Products></Products>,
       },
@@ -46,28 +34,19 @@ const Routers = createBrowserRouter([
         element: <Categories></Categories>,
       },
       {
-        path: "/Mobiles",
-        element: <Mobiles></Mobiles>,
-      },
-      {
         path: "/cart",
         element: <Cart></Cart>,
       },
-
-      // {
-      //   path: "/RegisterForm",
-      //   element: <RegisterForm></RegisterForm>,
-      // },
+      {
+        path: "/RegisterForm",
+        element: <RegisterForm></RegisterForm>,
+      },
     ],
   },
   {
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children: [
-      {
-        path: "usercontrol",
-        element: <RegisterForm></RegisterForm>,
-      },
       {
         path: "allUsers",
         element: <AllUsers></AllUsers>,
@@ -81,8 +60,8 @@ const Routers = createBrowserRouter([
         element: <Admindash></Admindash>,
       },
       {
-        path: "Prtc",
-        element: <Prtc></Prtc>,
+        path: "UserHome",
+        element: <UserHome></UserHome>,
       },
     ],
   },

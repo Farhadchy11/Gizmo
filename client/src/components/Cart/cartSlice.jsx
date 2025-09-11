@@ -35,7 +35,7 @@ const cartSlice = createSlice({
       const itemToUpdate = state.items.find((item) => item.id === productID);
 
       const difference = quantity - itemToUpdate.quantity;
-      //   if (quantity <= MAX_QUANTITY) {
+
       itemToUpdate.quantity = quantity;
       const str1 = itemToUpdate.price;
       const price = Number(str1);

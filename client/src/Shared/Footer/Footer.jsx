@@ -1,4 +1,3 @@
-
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
@@ -11,10 +10,10 @@ const Footer = () => {
             <h2 className="text-lg font-semibold text-white mb-3">
               CONTACT INFO
             </h2>
-            <p>NINAKABBO 227/A Tejgaon-Gulshan Link Road</p>
-            <p>Postal Code: 1208 Dhaka, Bangladesh</p>
-            <p className="mt-2">📞 +8801777584000</p>
-            <p>📧 hello@arfat.com.bd</p>
+            <p>3132 Kenwood Place</p>
+            <p>Postal Code: 33301 Florida,United States</p>
+            <p className="mt-2">📞 +18143133180</p>
+           
             {/* Social Icons */}
             <div className="flex space-x-3 mt-4 text-white">
               <a href="#" className="hover:text-blue-500">
@@ -36,11 +35,6 @@ const Footer = () => {
               <li>
                 <a href="#" className="hover:text-gray-400">
                   Who We Are
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-400">
-                  Sailor Club
                 </a>
               </li>
               <li>
@@ -117,10 +111,10 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-700 mt-8 pt-4 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm">Copyright ©2025 Sailor. All Rights Reserved</p>
+          <p className="text-sm">Copyright ©2025 Gizmo. All Rights Reserved</p>
           <p className="text-sm">
             System Design & Developed By:{" "}
-            <span className="text-red-500">Mediasoft Data Systems Ltd.</span>
+            <span className="text-red-500">Farhad</span>
           </p>
         </div>
       </div>

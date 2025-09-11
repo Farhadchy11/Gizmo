@@ -2,16 +2,14 @@ import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {  AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-//import { BiStar } from "react-icons/bi";
-import { review } from "./reviewData.jsx";
-import ReviewCom  from "./ReviewCom.jsx";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { review } from "../../Data/reviewData.jsx";
+import ReviewCom from "./ReviewCom.jsx";
 
 const CustomerFeedback = () => {
   const [products, setProducts] = useState([...review]);
 
   const settings = {
-
     infinite: true,
     speed: 600,
     slidesToShow: 3,
@@ -21,7 +19,7 @@ const CustomerFeedback = () => {
     pauseOnHover: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
-   
+
     responsive: [
       {
         breakpoint: 1280,
@@ -39,40 +37,36 @@ const CustomerFeedback = () => {
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
-          arrows: false,
         },
       },
     ],
   };
 
   return (
-    <div className="w-full  px-4 bg-black text-white relative overflow-hidden">
+    <div className="w-full  sm:pt-15 px-3 pb-6 sm:pb-0 bg-black text-white relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-72 h-72  rounded-full -translate-x-36 -translate-y-36 opacity-30"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96  rounded-full translate-x-48 translate-y-48 opacity-20"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
-
-        <h1 class=" text-2xl text-white text-center mb-8  bg-clip-text text-transparent">
+        <h1 class=" text-2xl text-white text-center mb-6 sm:mb-10  bg-clip-text text-transparent">
           OUR CUSTOMER FEEDBACK
         </h1>
 
         {/* Products Slider */}
-        <div className="  py-4 relative slider-container">
+        <div className="  relative slider-container">
           <Slider {...settings}>
             {products.map((review, index) => (
               <div key={review.id} className="px-3">
                 <div className="transform transition-all duration-300 hover:scale-105">
-                  <ReviewCom  review={review} />
+                  <ReviewCom review={review} />
                 </div>
               </div>
             ))}
           </Slider>
         </div>
       </div>
-
-    
     </div>
   );
 };
