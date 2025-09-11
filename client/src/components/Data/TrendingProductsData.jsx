@@ -9,15 +9,6 @@ export const TrendingProducts = [
     price: "639",
   },
   {
-    id: 2,
-    category: "Watch",
-    title: "Apple Watch Series 7 ",
-    imgSrc: "https://m.media-amazon.com/images/I/51NV+STh2IL._AC_SX425_.jpg",
-    description:
-      "Apple Watch Series 7 GPS  ",
-    price: "200",
-  },
-  {
     id: 3,
     category: "Desktop ",
     title: "Panorama XL RTX 5090 PC ",
