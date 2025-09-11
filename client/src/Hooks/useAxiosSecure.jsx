@@ -19,7 +19,7 @@ import axios from "axios";
   // );
 
 export const axiosSecur = axios.create({
-  baseURL: `http://localhost:5050`,
+  baseURL: `https://ecommerceserver-mocha.vercel.app`,
 });
 const useAxiosSecur = () => {
   // const { logOut } = useAuthContext();
