@@ -71,18 +71,18 @@ async function run() {
     //    }
     //  });
 
-    //  app.get("/user/admin/:email", async (req, res) => {
-    //    const email = req.params.email;
-    //    console.log("email:", email);
-    //    const query = { email: email };
-    //    const user = await userCollection.findOne(query);
-    //    console.log("User found:", user);
-    //    let admin = false;
-    //    if (user) {
-    //      admin = user?.role === "admin";
-    //    }
-    //    res.send({ admin });
-    //  });
+      app.get("/user/admin/:email", async (req, res) => {
+        const email = req.params.email;
+      console.log("email:", email);
+        const query = { email: email };
+        const user = await userCollection.findOne(query);
+        console.log("User found:", user);
+        let admin = false;
+        if (user) {
+          admin = user?.role === "admin";
+       }
+        res.send({ admin });
+     });
 
     //  app.get("/allusers", async (req, res) => {
     //    const result = await userCollection.find().toArray();

@@ -1,15 +1,9 @@
 import { AuthContext } from "../../Providers/AuthProvider.jsx";
 import { useContext } from "react";
-import { MdDashboard, MdPayment } from "react-icons/md";
-import { FiHome, FiSettings, FiLogOut } from "react-icons/fi";
-import { BsFillCartCheckFill } from "react-icons/bs";
-import {
-  FaDiceD6,
-  FaMoneyCheckAlt,
-  FaShoppingCart,
-  FaUser,
-} from "react-icons/fa";
-//import { useState, useEffect } from "react";
+import { MdDashboard } from "react-icons/md";
+import { FiHome, FiLogOut } from "react-icons/fi";
+
+import { FaShoppingCart } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin.jsx";
 
 import { Link, Outlet } from "react-router-dom";
