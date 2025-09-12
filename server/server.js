@@ -77,14 +77,28 @@ async function run() {
 
     app.post("/users", async (req, res) => {
       try {
-        const user = req.body;
-        const result = await userCollection.insertOne(user);
-        res.status(201).json(result);
+        const newUser = new User({
+          username: req.body.name,
+          email: req.body.email
+          //password: req.body.password,
+          // ... other user data
+        });
+        await userCollection.save();
+        res.status(201).send(newUser);
       } catch (error) {
-        console.error("Error fetching users:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(400).send(error);
       }
     });
+    // app.post("/users", async (req, res) => {
+    //   try {
+    //     const user = req.body;
+    //     const result = await userCollection.insertOne(user);
+    //     res.status(201).json(result);
+    //   } catch (error) {
+    //     console.error("Error fetching users:", error);
+    //     res.status(500).json({ error: "Internal Server Error" });
+    //   }
+    // });
 
     app.get("/user/admin/:email", async (req, res) => {
       const email = req.params.email;
