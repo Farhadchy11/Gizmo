@@ -82,29 +82,29 @@ app.post("/users", async (req, res) => {
     //    next();
     //  };
 
-      app.post("/users", async (req, res) => {
-       try {
-        const user = req.body;
-          const result = await userCollection.insertOne(user);
-          res.status(201).json(result);
-        } catch (error) {
-          console.error("Error fetching users:", error);
-          res.status(500).json({ error: "Internal Server Error" });
-        }
-      });
+      // app.post("/users", async (req, res) => {
+      //  try {
+      //   const user = req.body;
+      //     const result = await userCollection.insertOne(user);
+      //     res.status(201).json(result);
+      //   } catch (error) {
+      //     console.error("Error fetching users:", error);
+      //     res.status(500).json({ error: "Internal Server Error" });
+      //   }
+      // });
 
-    app.get("/user/admin/:email", async (req, res) => {
-      const email = req.params.email;
-      console.log("email:", email);
-      const query = { email: email };
-      const user = await userCollection.findOne(query);
-      console.log("User found:", user);
-      let admin = false;
-      if (user) {
-        admin = user?.role === "admin";
-      }
-      res.send({ admin });
-    });
+    // app.get("/user/admin/:email", async (req, res) => {
+    //   const email = req.params.email;
+    //   console.log("email:", email);
+    //   const query = { email: email };
+    //   const user = await userCollection.findOne(query);
+    //   console.log("User found:", user);
+    //   let admin = false;
+    //   if (user) {
+    //     admin = user?.role === "admin";
+    //   }
+    //   res.send({ admin });
+    // });
 
     //  app.get("/allusers", async (req, res) => {
     //    const result = await userCollection.find().toArray();
