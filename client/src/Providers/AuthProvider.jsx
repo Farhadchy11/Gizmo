@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         console.log(currentUser.email);
         const userInfo = { email: currentUser.email };
-        axios.post("http://localhost:5050/jwt", userInfo).then((res) => {
+        axios.post("https://ecommerceserver-mocha.vercel.app/jwt", userInfo).then((res) => {
           console.log("JWT Response:", res.data.token);
 
           if (res.data.token) {

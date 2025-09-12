@@ -30,13 +30,13 @@ async function run() {
       res.send("server is running");
     });
 
-    // app.post("/jwt", async (req, res) => {
-    //   const user = req.body;
-    //   const token = jwt.sign(user, key, {
-    //     expiresIn: "2h",
-    //   });
-    //   res.send({ token });
-    // });
+     app.post("/jwt", async (req, res) => {
+       const user = req.body;
+       const token = jwt.sign(user, key, {
+         expiresIn: "2h",
+       });
+       res.send({ token });
+     });
 
     // const verifyToken = (req, res, next) => {
     //   const token = req.headers.authorization.split(" ")[1];
