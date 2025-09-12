@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAuthContext from "./useAuthContext";
-import axios from "axios";
-
+//import axios from "axios";
+import useAxiosSecur from "./useAxiosSecur.jsx";
 const useAdmin = () => {
   // const { user } = useAuthContext();
   // console.log("Useadmin hooks user:", user);
@@ -9,6 +9,8 @@ const useAdmin = () => {
   console.log("Useadmin hooks user:", user);
   const [isAdmin, setIsAdmin] = useState(false);
   console.log("Useadmin hooks isAdmin:", isAdmin);
+ const axiosSecure = useAxiosSecur()
+
   //const [adminData, setAdminData] = useState(null);
   //const [loading, setLoading] = useState(true);
   //const [error, setError] = useState(null);
@@ -23,9 +25,7 @@ const useAdmin = () => {
         const email = user?.email;
         console.log("Fetching admin status for email:", email);
         //  setLoading(true);
-        const response = await axios.get(
-          `http://localhost:5050/user/admin/${email}`
-        ); // Replace with your API endpoint
+        const response = await axiosSecure.get(`/user/admin/${email}`); // Replace with your API endpoint
         setIsAdmin(response.data.admin);
         // const userData = response.data;
         // setIsAdmin(userData.admin);
