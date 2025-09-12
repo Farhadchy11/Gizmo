@@ -6,7 +6,6 @@ import cors from "cors";
 app.use(cors());
 app.use(express.json());
 const PORT = 5050;
-
 const key = "farhad@$";
 
 // const uri =
@@ -26,9 +25,9 @@ async function run() {
 
     //const userCollection = client.db("ecommerce").collection("users");
 
-    app.use("/", (req, res) => {
-      res.send("server is running");
-    });
+    // app.use("/", (req, res) => {
+    //   res.send("server is running");
+    // });
 
      app.post("/jwt", async (req, res) => {
        const user = req.body;
@@ -37,6 +36,10 @@ async function run() {
        });
        res.send({ token });
      });
+
+
+
+
 
     // const verifyToken = (req, res, next) => {
     //   const token = req.headers.authorization.split(" ")[1];

@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
         console.log(currentUser.email);
         const userInfo = { email: currentUser.email };
         axios.post("https://ecommerceserver-mocha.vercel.app/jwt", userInfo).then((res) => {
-          console.log("JWT Response:", res.data.token);
+        console.log("JWT Response:", res.data.token);
 
           if (res.data.token) {
             // GoogleAuthProvider('access-token', res.data.token);
