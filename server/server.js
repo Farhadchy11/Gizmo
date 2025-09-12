@@ -1,92 +1,60 @@
 import express from "express";
 //import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
+//import mongoose from "mongoose";
+import { MongoClient, ServerApiVersion } from "mongodb";
+//import User from "./model/user.js";
 const app = express();
 import cors from "cors";
 app.use(cors());
 app.use(express.json());
 const PORT = 5050;
+//const key = "farhad@$";
 
-//const key ='farhad@$'
-
-mongoose
-  .connect(
-    "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata"
-  )
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB:", err);
-  });
-
-//
-// app.post("/jwt", async (req, res) => {
-//   // console.log(req.headers)
-//   const user = req.body;
-//   const token = jwt.sign(user, key, {
-//     expiresIn: "2h",
-//   });
-//   res.send({ token });
-// });
-
-//  const verifyToken = (req, res, next) => {
-//    const token = req.headers.authorization.split(" ")[1];
-//    jwt.verify(token, key, (error, decoded) => {
-//     if (error) {
-//        return res.status(401).send({ message: "forbidden access" });
-//      }
-//     req.decoded = decoded;
-//     next();
-//   });
-// };
-
-// app.post("/verify", async (req, res) => {
-// const token = req.headers.authorization.split(" ")[1];
-
-//  jwt.verify(token, key, (error, data) => {
-//    if (error) {
-//      return res.status(401).send({ message: "forbidden access" });
-//    }else {
-//       return res.status(401).send({ message: "valid token", data});
-//    }
-//   })
-
-// });
-
-app.post("/users", async (req, res) => {
-  try {
-    const user = await User.create(req.body);
-    //res.json(users);
-    res.status(201).json({ message: "User created successfully", user });
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
+const uri =
+  "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata";
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 });
 
-// app.post('/products', verifyToken, async (req, res) => {
-//       const item = req.body;
-//       const result = await productCollection.insertOne(item);
-//       res.send(result)
-//     })
+async function run() {
+  try {
+    await client.connect();
 
-// app.post("/products", async (req, res) => {
-//    try {
-//     const user = await User.create(req.body);
-//     //res.json(users);
-//     res.status(201).json(user);
-//    } catch (error) {
-//      console.error("Error fetching users:", error);
-//      res.status(500).json({ error: "Internal Server Error" });
-//    }
-//  });
+    console.log("Connected to MongoDB Atlas!");
 
-// app.get("/users", async (req, res) => {
-//   const user = await User.find();
-//   res.send(user);
-//   console.log(user);
-// });
+    const userCollection = client.db("ecommerce").collection("users");
+
+    // app.post("/users", async (req, res) => {
+    //    try {
+    //     const user = await User.create(req.body);
+    //     //res.json(users);
+    //     res.status(201).json({ message: "User created successfully", user });
+    //   } catch (error) {
+    //     console.error("Error fetching users:", error);
+    //     res.status(500).json({ error: "Internal Server Error" });
+    //    }
+    //  });
+
+    app.post("/users", async (req, res) => {
+      try {
+        const user = req.body;
+        const result = await userCollection.insertOne(user);
+        res.status(201).json(result);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
+    });
+  } catch (error) {
+    console.log("Error connecting to MongoDB Atlas:", error);
+  }
+}
+
+run();
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
