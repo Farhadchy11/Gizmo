@@ -33,9 +33,9 @@ async function run() {
 
     //const userCollection = client.db("ecommerce").collection("users");
 
-    app.use("/", (req, res) => {
-      res.send("server is running");
-    });
+    // app.use("/", (req, res) => {
+    //   res.send("server is running");
+    // });
 
     app.post("/jwt", async (req, res) => {
       const user = req.body;
