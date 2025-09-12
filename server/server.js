@@ -1,5 +1,5 @@
 import express from "express";
-import jwt from "jsonwebtoken";
+//import jwt from "jsonwebtoken";
 //import { MongoClient, ServerApiVersion } from "mongodb";
 const app = express();
 import cors from "cors";
@@ -26,13 +26,17 @@ async function run() {
 
     //const userCollection = client.db("ecommerce").collection("users");
 
-    app.post("/jwt", async (req, res) => {
-      const user = req.body;
-      const token = jwt.sign(user, key, {
-        expiresIn: "2h",
-      });
-      res.send({ token });
+    app.use("/", (req, res) => {
+      res.send("server is running");
     });
+
+    // app.post("/jwt", async (req, res) => {
+    //   const user = req.body;
+    //   const token = jwt.sign(user, key, {
+    //     expiresIn: "2h",
+    //   });
+    //   res.send({ token });
+    // });
 
     // const verifyToken = (req, res, next) => {
     //   const token = req.headers.authorization.split(" ")[1];
@@ -106,7 +110,7 @@ async function run() {
     //   res.send(result);
     // });
   } catch (error) {
-    console.error("Error connecting to MongoDB Atlas:", error);
+    console.log("Error connecting to MongoDB Atlas:", error);
   }
 }
 
