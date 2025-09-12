@@ -38,56 +38,56 @@ async function run() {
      });
 
 
-     const verifyToken = (req, res, next) => {
-       const token = req.headers.authorization.split(" ")[1];
-       jwt.verify(token, key, (error, decoded) => {
-         if (error) {
-          return res.status(401).send({ message: "forbidden access" });
-         }
-         req.decoded = decoded;
-         next();
-       });
-     };
+    //  const verifyToken = (req, res, next) => {
+    //    const token = req.headers.authorization.split(" ")[1];
+    //    jwt.verify(token, key, (error, decoded) => {
+    //      if (error) {
+    //       return res.status(401).send({ message: "forbidden access" });
+    //      }
+    //      req.decoded = decoded;
+    //      next();
+    //    });
+    //  };
 
-     const verifyAdmin = async (req, res, next) => {
-       const email = req.decoded.email;
-       const query = { email };
-       const user = await usersCollection.findOne(query);
-     const isAdmin = user?.role === "admin";
-       if (!isAdmin) {
-         return res.status(403).send({ message: "forbidden access" });
-       }
-       next();
-     };
+    //  const verifyAdmin = async (req, res, next) => {
+    //    const email = req.decoded.email;
+    //    const query = { email };
+    //    const user = await usersCollection.findOne(query);
+    //  const isAdmin = user?.role === "admin";
+    //    if (!isAdmin) {
+    //      return res.status(403).send({ message: "forbidden access" });
+    //    }
+    //    next();
+    //  };
 
-     app.post("/users", async (req, res) => {
-      try {
-       const user = req.body;
-         const result = await userCollection.insertOne(user);
-         res.status(201).json(result);
-       } catch (error) {
-         console.error("Error fetching users:", error);
-         res.status(500).json({ error: "Internal Server Error" });
-       }
-     });
+    //  app.post("/users", async (req, res) => {
+    //   try {
+    //    const user = req.body;
+    //      const result = await userCollection.insertOne(user);
+    //      res.status(201).json(result);
+    //    } catch (error) {
+    //      console.error("Error fetching users:", error);
+    //      res.status(500).json({ error: "Internal Server Error" });
+    //    }
+    //  });
 
-     app.get("/user/admin/:email", async (req, res) => {
-       const email = req.params.email;
-       console.log("email:", email);
-       const query = { email: email };
-       const user = await userCollection.findOne(query);
-       console.log("User found:", user);
-       let admin = false;
-       if (user) {
-         admin = user?.role === "admin";
-       }
-       res.send({ admin });
-     });
+    //  app.get("/user/admin/:email", async (req, res) => {
+    //    const email = req.params.email;
+    //    console.log("email:", email);
+    //    const query = { email: email };
+    //    const user = await userCollection.findOne(query);
+    //    console.log("User found:", user);
+    //    let admin = false;
+    //    if (user) {
+    //      admin = user?.role === "admin";
+    //    }
+    //    res.send({ admin });
+    //  });
 
-     app.get("/allusers", async (req, res) => {
-       const result = await userCollection.find().toArray();
-       res.send(result);
-     });
+    //  app.get("/allusers", async (req, res) => {
+    //    const result = await userCollection.find().toArray();
+    //    res.send(result);
+    //  });
 
     // app.post("/create-payment-intent", async (req, res) => {
     //   const { totalPrice } = req.body;
