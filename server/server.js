@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-//import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 const app = express();
 import cors from "cors";
 app.use(cors());
@@ -8,26 +8,26 @@ app.use(express.json());
 const PORT = 5050;
 const key = "farhad@$";
 
-//  const uri =
-//    "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata";
-//  const client = new MongoClient(uri, {
-//   serverApi: {
-//      version: ServerApiVersion.v1,
-//      strict: true,
-//      deprecationErrors: true,
-//    },
-//  });
+ const uri =
+    "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata";
+  const client = new MongoClient(uri, {
+   serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+   },
+  });
 
 async function run() {
   try {
-     //await client.connect();
-     //console.log("Connected to MongoDB Atlas!");
+     await client.connect();
+     console.log("Connected to MongoDB Atlas!");
 
-    //const userCollection = client.db("ecommerce").collection("users");
+    const userCollection = client.db("ecommerce").collection("users");
 
-    // app.use("/", (req, res) => {
-    //   res.send("server is running");
-    // });
+     app.use("/", (req, res) => {
+       res.send("server is running");
+     });
 
      app.post("/jwt", async (req, res) => {
        const user = req.body;
