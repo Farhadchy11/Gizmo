@@ -14,9 +14,8 @@ import { updateProfile } from "firebase/auth";
 const RegisterForm = () => {
   const { createUser } = useContext(AuthContext);
   // const axiosPublic = useAxiosPublick()
-  // 
-  
-  
+  //
+
   const handleRegisterform = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -39,23 +38,25 @@ const RegisterForm = () => {
               email: user.email,
               // dateAdded: new Date().toLocaleString(),
             }; //const response = await axios.post("http://localhost:5050/users", payload);
-            axios.post("https://ecommerceserver-mocha.vercel.app/users", userInfo).then((res) => {
-              console.log(res, "User registration response");
-              if (res.data.insertedId) {
-                // ✅ সফল হলে Success Alert
-                // Swal.fire({
-                //     title: "Registration Successful!",
-                //     text: "Your account has been created successfully.",
-                //     icon: "success",
-                //     confirmButtonColor: "#3085d6",
-                //     confirmButtonText: "OK",
-                // });
-                console.log(
-                  "User registered successfully:",
-                  res.data.insertedId
-                );
-              }
-            });
+            axios
+              .post("https://ecommerceserver-mocha.vercel.app/users", userInfo)
+              .then((res) => {
+                console.log(res, "User registration response");
+                if (res.data.insertedId) {
+                  // ✅ সফল হলে Success Alert
+                  // Swal.fire({
+                  //     title: "Registration Successful!",
+                  //     text: "Your account has been created successfully.",
+                  //     icon: "success",
+                  //     confirmButtonColor: "#3085d6",
+                  //     confirmButtonText: "OK",
+                  // });
+                  console.log(
+                    "User registered successfully:",
+                    res.data.insertedId
+                  );
+                }
+              });
           })
           .catch(() => {
             // ❌ Profile Update Failed Alert
