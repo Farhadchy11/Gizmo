@@ -39,7 +39,7 @@ const RegisterForm = () => {
               email: user.email,
               // dateAdded: new Date().toLocaleString(),
             }; //const response = await axios.post("http://localhost:5050/users", payload);
-            axios.post("http://localhost:5050/users", userInfo).then((res) => {
+            axios.post("https://ecommerceserver-mocha.vercel.app/users", userInfo).then((res) => {
               console.log(res, "User registration response");
               if (res.data.insertedId) {
                 // ✅ সফল হলে Success Alert
