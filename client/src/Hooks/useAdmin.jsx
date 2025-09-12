@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAuthContext from "./useAuthContext";
 //import axios from "axios";
-import useAxiosSecur from "./useAxiosSecur.jsx";
+import useAxiosSecure from "./useAxiosSecure.jsx";
 const useAdmin = () => {
   // const { user } = useAuthContext();
   // console.log("Useadmin hooks user:", user);
@@ -9,7 +9,7 @@ const useAdmin = () => {
   console.log("Useadmin hooks user:", user);
   const [isAdmin, setIsAdmin] = useState(false);
   console.log("Useadmin hooks isAdmin:", isAdmin);
- const axiosSecure = useAxiosSecur()
+ const axiosSecure = useAxiosSecure()
 
   //const [adminData, setAdminData] = useState(null);
   //const [loading, setLoading] = useState(true);
