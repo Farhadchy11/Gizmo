@@ -34,9 +34,16 @@ const PORT = 5050;
 // });
 
 //const client = new MongoClient(uri);
+app.post("/jwt", async (req, res) => {
+       const user = req.body;
+       const token = jwt.sign(user, key, {
+         expiresIn: "2h",
+       });
+       res.send({ token });
+     });
 
-async function run() {
-  try {
+// async function run() {
+//   try {
     // await client.connect();
     // console.log("Connected to MongoDB Atlas!");
     // const database = client.db("ecommerce");
@@ -44,13 +51,7 @@ async function run() {
     //const userCollection = database.collection("us");
     //  const productCollection = database.collection("products");
 
-     app.post("/jwt", async (req, res) => {
-       const user = req.body;
-       const token = jwt.sign(user, key, {
-         expiresIn: "2h",
-       });
-       res.send({ token });
-     });
+     
 
     // const verifyToken = (req, res, next) => {
     //   const token = req.headers.authorization.split(" ")[1];
@@ -230,13 +231,13 @@ async function run() {
     //     console.error("Error fetching users:", error);
     //     res.status(500).json({ error: "Internal Server Error" });
     //   }
-    // });
-  } catch (error) {
-    console.error("Error connecting to MongoDB Atlas:", error);
-  }
-}
+//     // });
+//   } catch (error) {
+//     console.error("Error connecting to MongoDB Atlas:", error);
+//   }
+// }
 
-run();
+// run();
 
 // mongoose
 //   .connect(
