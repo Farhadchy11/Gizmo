@@ -1,8 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 const app = express();
-import cors from "cors";
-app.use(cors());
+// import cors from "cors";
+// app.use(cors());
 app.use(express.json());
 const PORT = 5050;
 
