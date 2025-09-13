@@ -34,7 +34,6 @@ const AuthProvider = ({ children }) => {
           .post("https://ecommerceserver-mocha.vercel.app/jwt", userInfo)
           .then((res) => {
             console.log("JWT Response:", res.data.token);
-
             if (res.data.token) {
               // GoogleAuthProvider('access-token', res.data.token);
               localStorage.setItem("access-token", res.data.token);
