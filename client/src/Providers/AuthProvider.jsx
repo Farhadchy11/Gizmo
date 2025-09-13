@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
         console.log(currentUser.email);
         const userInfo = { email: currentUser.email };
         axios
-          .post("https://ecommerceserver-8rdhblj27-farhads-projects-63b63f68.vercel.app", userInfo)
+          .post("https://ecommerceserver-8rdhblj27-farhads-projects-63b63f68.vercel.app/jwt", userInfo)
           .then((res) => {
             console.log("JWT Response:", res.data.token);
 
