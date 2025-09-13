@@ -30,14 +30,16 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         console.log(currentUser.email);
         const userInfo = { email: currentUser.email };
-        axios.post("https://ecommerceserver-mocha.vercel.app/jwt", userInfo).then((res) => {
-        console.log("JWT Response:", res.data.token);
+        axios
+          .post("https://ecommerceserver-mocha.vercel.app/jwt", userInfo)
+          .then((res) => {
+            console.log("JWT Response:", res.data.token);
 
-          if (res.data.token) {
-            // GoogleAuthProvider('access-token', res.data.token);
-            localStorage.setItem("access-token", res.data.token);
-          }
-        });
+            if (res.data.token) {
+              // GoogleAuthProvider('access-token', res.data.token);
+              localStorage.setItem("access-token", res.data.token);
+            }
+          });
       } else {
         localStorage.removeItem("access-token"); // ✅ fixed
         // setLoading(false);

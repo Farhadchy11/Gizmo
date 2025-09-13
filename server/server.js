@@ -39,56 +39,67 @@ async function run() {
   try {
     await client.connect();
     console.log("Connected to MongoDB Atlas!");
-
     // const database = client.db("ecommerce");
-    const userCollection = client.db("ecommerce").collection("users");
+    //const userCollection = client.db("ecommerce").collection("users");
     //const userCollection = database.collection("us");
     //  const productCollection = database.collection("products");
 
-    app.post("/jwt", async (req, res) => {
-      const user = req.body;
-      const token = jwt.sign(user, key, {
-        expiresIn: "2h",
-      });
-      res.send({ token });
-    });
-
-    const verifyToken = (req, res, next) => {
-      const token = req.headers.authorization.split(" ")[1];
-      jwt.verify(token, key, (error, decoded) => {
-        if (error) {
-          return res.status(401).send({ message: "forbidden access" });
-        }
-        req.decoded = decoded;
-        next();
-      });
-    };
-
-    const verifyAdmin = async (req, res, next) => {
-      const email = req.decoded.email;
-      const query = { email };
-      const user = await usersCollection.findOne(query);
-      const isAdmin = user?.role === "admin";
-      if (!isAdmin) {
-        return res.status(403).send({ message: "forbidden access" });
-      }
-      next();
-    };
-
-     app.post("/users", async (req, res) => {
-       try {
-         const newUser = new User({
-           name: req.body.name,
-           email: req.body.email
-           //password: req.body.password,
-           // ... other user data
-         });
-        await userCollection.save();
-         res.status(201).send(newUser);
-       } catch (error) {
-       res.status(400).send(error);
-       }
+     app.post("/jwt", async (req, res) => {
+       const user = req.body;
+       const token = jwt.sign(user, key, {
+         expiresIn: "2h",
+       });
+       res.send({ token });
      });
+
+    // const verifyToken = (req, res, next) => {
+    //   const token = req.headers.authorization.split(" ")[1];
+    //   jwt.verify(token, key, (error, decoded) => {
+    //     if (error) {
+    //       return res.status(401).send({ message: "forbidden access" });
+    //     }
+    //     req.decoded = decoded;
+    //     next();
+    //   });
+    // };
+
+    // const verifyAdmin = async (req, res, next) => {
+    //   const email = req.decoded.email;
+    //   const query = { email };
+    //   const user = await usersCollection.findOne(query);
+    //   const isAdmin = user?.role === "admin";
+    //   if (!isAdmin) {
+    //     return res.status(403).send({ message: "forbidden access" });
+    //   }
+    //   next();
+    // };
+
+// app.post("/users", async (req, res) => {
+//     try {
+//     const user = await User.create(req.body);
+//     //res.json(users);
+//     res.status(201).json({ message: "User created successfully", user });
+//   } catch (error) {
+//     console.error("Error fetching users:", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//    }
+//     });
+
+
+    // app.post("/users", async (req, res) => {
+    //   try {
+    //     const newUser = new User({
+    //       name: req.body.name,
+    //       email: req.body.email,
+    //       //password: req.body.password,
+    //       // ... other user data
+    //     });
+    //     await userCollection.save();
+    //     res.status(201).send(newUser);
+    //   } catch (error) {
+    //     res.status(400).send(error);
+    //   }
+    // });
     //  app.post("/users", async (req, res) => {
     //    try {
     //      const user = req.body;
@@ -100,37 +111,37 @@ async function run() {
     //    }
     //  });
 
-    app.get("/user/admin/:email", async (req, res) => {
-      const email = req.params.email;
-      console.log("email:", email);
-      const query = { email: email };
-      const user = await userCollection.findOne(query);
-      console.log("User found:", user);
-      let admin = false;
-      if (user) {
-        admin = user?.role === "admin";
-      }
-      res.send({ admin });
-    });
+    // app.get("/user/admin/:email", async (req, res) => {
+    //   const email = req.params.email;
+    //   console.log("email:", email);
+    //   const query = { email: email };
+    //   const user = await userCollection.findOne(query);
+    //   console.log("User found:", user);
+    //   let admin = false;
+    //   if (user) {
+    //     admin = user?.role === "admin";
+    //   }
+    //   res.send({ admin });
+    // });
 
-    app.get("/allusers", async (req, res) => {
-      const result = await userCollection.find().toArray();
-      res.send(result);
-    });
+    // app.get("/allusers", async (req, res) => {
+    //   const result = await userCollection.find().toArray();
+    //   res.send(result);
+    // });
 
-    app.post("/create-payment-intent", async (req, res) => {
-      const { totalPrice } = req.body;
-      const amount = parseInt(totalPrice * 100); // converting to paisa/cent
+    // app.post("/create-payment-intent", async (req, res) => {
+    //   const { totalPrice } = req.body;
+    //   const amount = parseInt(totalPrice * 100); // converting to paisa/cent
 
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: amount,
-        currency: "usd",
-        payment_method_types: ["card"],
-      });
-      res.send({
-        clientSecret: paymentIntent.client_secret,
-      });
-    });
+    //   const paymentIntent = await stripe.paymentIntents.create({
+    //     amount: amount,
+    //     currency: "usd",
+    //     payment_method_types: ["card"],
+    //   });
+    //   res.send({
+    //     clientSecret: paymentIntent.client_secret,
+    //   });
+    // });
 
     // app.delete("/users/:id", async (req, res) => {
     //   const id = req.params.id;

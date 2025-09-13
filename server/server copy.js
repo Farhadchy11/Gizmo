@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 //import mongoose from "mongoose";
 
 import { MongoClient, ServerApiVersion } from "mongodb";
-//import User from "./model/user.js";
+import User from "./model/user.js";
 const app = express();
 import cors from "cors";
 app.use(cors());
@@ -38,13 +38,13 @@ async function run() {
     //   res.send("server is running");
     // });
 
-    app.post("/jwt", async (req, res) => {
-      const user = req.body;
-      const token = jwt.sign(user, key, {
-        expiresIn: "2h",
-      });
-      res.send({ token });
-    });
+    // app.post("/jwt", async (req, res) => {
+    //   const user = req.body;
+    //   const token = jwt.sign(user, key, {
+    //     expiresIn: "2h",
+    //   });
+    //   res.send({ token });
+    // });
 
     // app.post("/users", async (req, res) => {
     //    try {
@@ -80,15 +80,25 @@ async function run() {
     //  };
 
     app.post("/users", async (req, res) => {
-      try {
-        const user = req.body;
-        const result = await userCollection.insertOne(user);
-        res.status(201).json(result);
-      } catch (error) {
-        console.error("Error fetching users:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-      }
+    try {
+    const user = await User.create(req.body);
+    //res.json(users);
+    res.status(201).json({ message: "User created successfully", user });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+   }
     });
+    // app.post("/users", async (req, res) => {
+    //   try {
+    //     const user = req.body;
+    //     const result = await userCollection.insertOne(user);
+    //     res.status(201).json(result);
+    //   } catch (error) {
+    //     console.error("Error fetching users:", error);
+    //     res.status(500).json({ error: "Internal Server Error" });
+    //   }
+    // });
 
     // app.get("/user/admin/:email", async (req, res) => {
     //   const email = req.params.email;
