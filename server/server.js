@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 //import { MongoClient } from "mongodb";
-import { MongoClient, ServerApiVersion } from "mongodb";
+//import { MongoClient, ServerApiVersion } from "mongodb";
 //import crypto from "crypto";
 //import mongoose from "mongoose";
 //import dotenv from "dotenv";
@@ -23,22 +23,22 @@ const PORT = 5050;
 //var key = require('crypto').randomBytes(48).toString('hex');
 //const key = "farhad@$";
 //database name: datapractice
-const uri =
-  "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata";
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+// const uri =
+//   "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata";
+// const client = new MongoClient(uri, {
+//   serverApi: {
+//     version: ServerApiVersion.v1,
+//     strict: true,
+//     deprecationErrors: true,
+//   },
+// });
 
 //const client = new MongoClient(uri);
 
 async function run() {
   try {
-    await client.connect();
-    console.log("Connected to MongoDB Atlas!");
+    // await client.connect();
+    // console.log("Connected to MongoDB Atlas!");
     // const database = client.db("ecommerce");
     //const userCollection = client.db("ecommerce").collection("users");
     //const userCollection = database.collection("us");

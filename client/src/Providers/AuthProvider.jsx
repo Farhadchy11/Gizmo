@@ -8,7 +8,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   //signInWithPopup,
-  signOut,
+  signOut
 } from "firebase/auth";
 import { app } from "../Firebase/firebase.config.js";
 //import App from "./App.jsx";
