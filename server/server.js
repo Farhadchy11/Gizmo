@@ -1,55 +1,47 @@
 import express from "express";
-import jwt from "jsonwebtoken";
-import cors from "cors";
-import { MongoClient, ServerApiVersion } from "mongodb";
-//import User from "./model/user.js";
+//import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
+//import { MongoClient, ServerApiVersion } from "mongodb";
+import User from "./model/user.js";
 const app = express();
+import cors from "cors";
 app.use(cors());
 app.use(express.json());
 const PORT = 5050;
+const key = "farhad@$";
 
-const uri =
-  "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata";
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+// const userSchema = new mongoose.Schema({
+//         username: String,
+//         email: String,
+//         // ... other user details
+//     });
 
-async function run() {
+//    const User = mongoose.model('User', userSchema);
+
+async function connectDB() {
+  const uri =
+    "mongodb+srv://farhadchy500:farhad140@cluster0.xdeylsh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; // Replace placeholders
+
   try {
-    await client.connect();
-
-    console.log("Connected to MongoDB Atlas!");
-
-    const userCollection = client.db("ecommerce").collection("users");
+    await mongoose.connect(uri);
+    console.log("Connected successfully to MongoDB Atlas using Mongoose!");
 
     app.post("/users", async (req, res) => {
       try {
-        const user = req.body;
-        const result = await userCollection.insertOne(user);
-        res.status(201).json(result);
+        const user = await User.create(req.body);
+        //res.json(users);
+        res.status(201).json({ message: "User created successfully", user });
       } catch (error) {
         console.error("Error fetching users:", error);
         res.status(500).json({ error: "Internal Server Error" });
       }
     });
-
-    app.post("/jwt", async (req, res) => {
-      const user = req.body;
-      const token = jwt.sign(user, key, {
-        expiresIn: "2h",
-      });
-      res.send({ token });
-    });
-  } catch (error) {
-    console.error("Database Connection Error:", error);
+  } catch (e) {
+    console.log("Could not connect to MongoDB Atlas:", e);
   }
 }
 
-run();
+connectDB();
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
