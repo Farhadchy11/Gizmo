@@ -1,4 +1,6 @@
-import axios from "axios";
+//import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure.jsx";
+//import useAdmin from "../../Hooks/useAdmin.jsx";
 import { useState, useEffect } from "react";
 //import { useQuery } from "@tanstack/react-query";
 //import React from 'react';
@@ -8,6 +10,8 @@ import { useState, useEffect } from "react";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
+   const axiosSecure = useAxiosSecure()
+  
   //const [loading, setLoading] = useState(true);
   //const [error, setError] = useState(null);
   // State to trigger refetch
@@ -46,7 +50,7 @@ const AllUsers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosSecure.get(
           "https://ecommerceserver-mocha.vercel.app/allusers"
         );
         setUsers(response.data);
@@ -80,8 +84,8 @@ const AllUsers = () => {
     const ids = id;
     console.log(ids);
     //axios.delete(`http://localhost:5050/users/${ids}`).then((res) => {
-    axios
-      .delete("http://localhost:5050/users", { data: { ids } })
+  axiosSecure
+      .delete("https://ecommerceserver-mocha.vercel.app/users", { data: { ids } })
       .then((res) => {
         if (res.data.deletedCount > 0) {
           refetch();
