@@ -46,7 +46,9 @@ const AllUsers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5050/allusers");
+        const response = await axios.get(
+          "https://ecommerceserver-mocha.vercel.app/allusers"
+        );
         setUsers(response.data);
         console.log(response.data);
         // const result = await response.json();
@@ -75,14 +77,16 @@ const AllUsers = () => {
   //   });
 
   const deleteUser = (id) => {
-    const ids = id
+    const ids = id;
     console.log(ids);
     //axios.delete(`http://localhost:5050/users/${ids}`).then((res) => {
-    axios.delete('http://localhost:5050/users', { data: { ids } }).then((res) => {
-      if (res.data.deletedCount > 0) {
-        refetch();
-      }
-    });
+    axios
+      .delete("http://localhost:5050/users", { data: { ids } })
+      .then((res) => {
+        if (res.data.deletedCount > 0) {
+          refetch();
+        }
+      });
   };
 
   //   const handleToggleAdmin = (user) => {
@@ -178,8 +182,10 @@ const AllUsers = () => {
                 <td className="p-3 text-sm md:text-base">
                   <button
                     onClick={() => deleteUser(user._id)}
-                   // className="p-2 bg-red-500 rounded text-white hover:bg-red-600 transition-all"
-                  >delete</button>
+                    // className="p-2 bg-red-500 rounded text-white hover:bg-red-600 transition-all"
+                  >
+                    delete
+                  </button>
                 </td>
               </tr>
             ))}

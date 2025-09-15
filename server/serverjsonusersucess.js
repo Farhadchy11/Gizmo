@@ -25,6 +25,8 @@ async function run() {
   try {
     // await client.connect();
     console.log("MongoDB Connected Successfully!");
+
+    // ✅ এখানে তোমার ডাটাবেস কালেকশন ব্যবহার করতে পারবে
     const userCollection = client.db("ecommerce").collection("users");
 
     // jwt function
@@ -37,28 +39,6 @@ async function run() {
       res.send({ token });
     });
 
-    const verifyToken = (req, res, next) => {
-      const token = req.headers.authorization.split(" ")[1];
-      jwt.verify(token, key, (error, decoded) => {
-        if (error) {
-          return res.status(401).send({ message: "forbidden access" });
-        }
-        req.decoded = decoded;
-        next();
-      });
-    };
-
-    const verifyAdmin = async (req, res, next) => {
-      const email = req.decoded.email;
-      const query = { email };
-      const user = await usersCollection.findOne(query);
-      const isAdmin = user?.role === "admin";
-      if (!isAdmin) {
-        return res.status(403).send({ message: "forbidden access" });
-      }
-      next();
-    };
-
     app.post("/users", async (req, res) => {
       try {
         const user = req.body;
@@ -68,24 +48,6 @@ async function run() {
         console.error("Error fetching users:", error);
         res.status(500).json({ error: "Internal Server Error" });
       }
-    });
-
-    app.get("/user/admin/:email", async (req, res) => {
-      const email = req.params.email;
-      console.log("email:", email);
-      const query = { email: email };
-      const user = await userCollection.findOne(query);
-      console.log("User found:", user);
-      let admin = false;
-      if (user) {
-        admin = user?.role === "admin";
-      }
-      res.send({ admin });
-    });
-
-    app.get("/allusers", verifyToken, verifyAdmin, async (req, res) => {
-      const result = await userCollection.find().toArray();
-      res.send(result);
     });
 
     // // verifyToken
