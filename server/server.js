@@ -8,10 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 const key = "farhad@$";
+const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.lzni2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 //const uri = `mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata`;
 
-const client = new MongoClient(MONGODB_URI, {
+const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
