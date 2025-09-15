@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 const PORT = 5050;
 
-const uri =
+//const uri =
   "mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata";
-const client = new MongoClient(uri, {
+const client = new MongoClient(MONGODB_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
