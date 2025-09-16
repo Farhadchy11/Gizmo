@@ -2,12 +2,12 @@ import background from "../img/main-banner-1.webp";
 
 const Banner = () => {
   return (
-    <div className=" grid h-[200] lg:h-screen overflow-hidden">
+    <div className=" grid h-[300] sm:h-[50vh] lg:h-screen overflow-hidden">
       <div
-        className=" flex  items-center  bg-cover bg-center   py-15 bg-no-repeat "
+        className=" flex  items-center  bg-cover bg-center py-8 bg-no-repeat "
         style={{ backgroundImage: `url(${background})` }}
       >
-        <div class=" text-black pl-3 sm:pl-7 md:pl-4 leading-tight">
+        <div class=" text-black pl-4 sm:pl-7 md:pl-4 leading-tight">
           <h1 className="text-lg font-semibold bg-clip-text sm:text-6xl   mb-3">
             Explore,
             <span className="block  bg-clip-text ">Shop,</span>
