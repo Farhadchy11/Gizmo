@@ -30,7 +30,7 @@ const CheckoutForm = () => {
       const fetchData = async () => {
         try {
           const res = await axios.post(
-            "http://localhost:5050/create-payment-intent",
+            "https://ecommerceserver-mocha.vercel.app/create-payment-intent",
             { totalPrice }
           );
           const clientSecret = res.data.clientSecret;
@@ -77,7 +77,6 @@ const CheckoutForm = () => {
           card: card,
           billing_details: {
             name: "farhad",
-
             email: "farhad@example.com",
           },
         },

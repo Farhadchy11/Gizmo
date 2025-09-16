@@ -2,6 +2,7 @@ import express from "express";
 const app = express();
 import cors from "cors";
 import jwt from "jsonwebtoken";
+import Stripe from "stripe";
 import { MongoClient, ServerApiVersion } from "mongodb";
 const port = 5050;
 app.use(cors());
@@ -9,8 +10,9 @@ app.use(express.json());
 
 const key = "farhad@$";
 
-//const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.lzni2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-
+const stripe = new Stripe(
+  "sk_test_51RabRoB0vFsStBB9Z1aLtmEbmsSjG5EabJZXbmrK6TK4CC5RQ4bRFE8Qt2GS6YXJJAJ8qN7SoSnkPQ1hZKwTngtr00f78RPBpm"
+);
 const uri = `mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata`;
 
 const client = new MongoClient(uri, {
@@ -86,6 +88,21 @@ async function run() {
     app.get("/allusers", verifyToken, verifyAdmin, async (req, res) => {
       const result = await userCollection.find().toArray();
       res.send(result);
+    });
+
+
+ app.post("/create-payment-intent", async (req, res) => {
+      const { totalPrice } = req.body;
+      const amount = parseInt(totalPrice * 100); // converting to paisa/cent
+
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: "usd",
+        payment_method_types: ["card"],
+      });
+      res.send({
+        clientSecret: paymentIntent.client_secret,
+      });
     });
 
     // // verifyToken
