@@ -90,7 +90,8 @@ async function run() {
       res.send(result);
     });
 
-    app.post("/create-payment-intent", async (req, res) => {
+
+ app.post("/create-payment-intent", async (req, res) => {
       const { totalPrice } = req.body;
       const amount = parseInt(totalPrice * 100); // converting to paisa/cent
 
