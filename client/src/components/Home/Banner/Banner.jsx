@@ -2,7 +2,7 @@ import background from "../img/main-banner-1.webp";
 
 const Banner = () => {
   return (
-    <div className=" grid h-[50] lg:h-screen overflow-hidden">
+    <div className=" grid h-[200] lg:h-screen overflow-hidden">
       <div
         className=" flex  items-center  bg-cover bg-center   py-15 bg-no-repeat "
         style={{ backgroundImage: `url(${background})` }}
