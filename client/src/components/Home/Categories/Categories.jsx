@@ -32,21 +32,20 @@ const CustomerFeedback = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+          arrows: true,
         },
       },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
+           initialSlide: 1,
+           arrows: true,
         },
       },
-        {
-        breakpoint: 480, // When screen width is 480px or less
-        settings: {
-          slidesToShow: 1,
-         // slidesToScroll: 1
-        }
-      }
     ],
   };
 
