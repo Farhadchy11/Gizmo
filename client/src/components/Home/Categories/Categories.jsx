@@ -40,6 +40,13 @@ const CustomerFeedback = () => {
           slidesToShow: 1,
         },
       },
+        {
+        breakpoint: 480, // When screen width is 480px or less
+        settings: {
+          slidesToShow: 1,
+         // slidesToScroll: 1
+        }
+      }
     ],
   };
 
