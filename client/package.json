@@ -29,6 +29,7 @@
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.22.3",
     "sweetalert2-react-content": "^5.1.0",
+    "swiper": "^12.0.1",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {

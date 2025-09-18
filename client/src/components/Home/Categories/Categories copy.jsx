@@ -1,9 +1,6 @@
 //import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
 //import mobileImg from "../img/category-1_x100.webp";
 //import laptopImg from "../img/category-4_x100.avif";
 //import watchImg from "../img/category-6_x100.avif";
@@ -21,10 +18,6 @@ const ResponsiveSwiper = () => {
       pagination={{ clickable: true }}
       breakpoints={{
         // when window width is >= 640px
-        300: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
         640: {
           slidesPerView: 1,
           spaceBetween: 20,
