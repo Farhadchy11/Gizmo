@@ -33,7 +33,6 @@ const CheckoutForm = () => {
           const clientSecret = res.data.clientSecret;
           console.log("Client Secret fetch:", clientSecret);
           setClientSecret(res.data.clientSecret);
-          // setClientSecret(clientSecret.id);
         } catch (e) {
           console.log("Error fetching payment intent:", e);
         }
@@ -84,33 +83,10 @@ const CheckoutForm = () => {
       setCardError(confirmError.message);
     } else {
       if (paymentIntent.status === "succeeded") {
-        // console.log("[PaymentIntent]", paymentIntent);
         setSuccess("✅ Payment successful!");
-        // Optional: save payment info to database
-        // const payment = {
-        //   email: user.email,
-        //   name: user.displayName,
-        //   // userImage: user.image,
-        //   address: formData.address,
-        //   //  category: cart.category,
-        //   phone: formData.phone,
-        //   price: totalPrice,
-        //   // date: new Date(),
-        //   transactionId: paymentIntent.id
-        //   //  cardIds: cart.map((item) => item._id),
-        //   // productIds: cart.map((item) => item.productId),
-        // };
-        //  const res = axiosSecure.post("/payments", payment);
-        // refetch();
       }
     }
-
-    // setProcessing(false);
   };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
   return (
     <div>
@@ -153,14 +129,7 @@ const CheckoutForm = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          //disabled={!stripe || !clientSecret || processing}
-          //className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-        >
-          Pay
-        </button>
-        {/* <button onClick={fetchData}>fetchsecret</button> */}
+        <button type="submit">Pay</button>
 
         {cardError && (
           <p className="text-red-500 text-sm text-center">{cardError}</p>
