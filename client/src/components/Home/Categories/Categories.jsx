@@ -4,11 +4,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-//import mobileImg from "../img/category-1_x100.webp";
-//import laptopImg from "../img/category-4_x100.avif";
-//import watchImg from "../img/category-6_x100.avif";
-//import airpodsImg from "../img/category-5_x100.webp";
-//import speakerImg from "../img/category-7_x100.avif";
+import { Link } from "react-router-dom";
+import mobileImg from "../img/category-1_x100.webp";
+import laptopImg from "../img/category-4_x100.avif";
+import watchImg from "../img/category-6_x100.avif";
+import airpodsImg from "../img/category-5_x100.webp";
+import speakerImg from "../img/category-7_x100.avif";
 
 const ResponsiveSwiper = () => {
   return (
@@ -41,11 +42,72 @@ const ResponsiveSwiper = () => {
         },
       }}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      <SwiperSlide>Slide 5</SwiperSlide>
+      <SwiperSlide>
+        <div class=" flex flex-col items-center mx-auto">
+          <div class=" flex flex-col items-center mx-auto  ">
+            <img
+              src={mobileImg}
+              class=" h-40 w-40 mx-auto  object-scale-down"
+            />
+          </div>
+          <Link to={"/Products"} class="">
+            <h1 class="text-lg text-center mt-2 ">Mobiles</h1>
+          </Link>
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div class=" flex flex-col items-center mx-auto">
+          <div class=" flex flex-col items-center mx-auto  ">
+            <img
+              src={laptopImg}
+              class=" h-40 w-40 mx-auto  object-scale-down"
+            />
+          </div>
+          <Link to={"/Products"} class="">
+            <h1 class="text-lg text-center mt-2 ">Laptops</h1>
+          </Link>
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div class=" flex flex-col items-center mx-auto">
+          <div class=" flex flex-col items-center mx-auto  ">
+            <img src={watchImg} class=" h-40 w-40 mx-auto  object-scale-down" />
+          </div>
+          <Link to={"/Products"} class="">
+            <h1 class="text-lg text-center mt-2 ">Watch</h1>
+          </Link>
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div class=" flex flex-col items-center mx-auto">
+          <div class=" flex flex-col items-center mx-auto  ">
+            <img
+              src={airpodsImg}
+              class=" h-40 w-40 mx-auto  object-scale-down"
+            />
+          </div>
+          <Link to={"/Products"} class="">
+            <h1 class="text-lg text-center mt-2 ">Airpods</h1>
+          </Link>
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div class=" flex flex-col items-center mx-auto">
+          <div class=" flex flex-col items-center mx-auto  ">
+            <img
+              src={speakerImg}
+              class=" h-40 w-40 mx-auto  object-scale-down"
+            />
+          </div>
+          <Link to={"/Products"} class="">
+            <h1 class="text-lg text-center mt-2 ">speaker</h1>
+          </Link>
+        </div>
+      </SwiperSlide>
     </Swiper>
   );
 };
