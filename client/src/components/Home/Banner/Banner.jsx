@@ -8,7 +8,7 @@ const Banner = () => {
         style={{ backgroundImage: `url(${background})` }}
       >
         <div class=" text-black pl-4 sm:pl-7 md:pl-4 leading-tight">
-          <h1 className="text-lg font-semibold bg-clip-text sm:text-6xl   mb-3">
+          <h1 className="text-lg font-semibold bg-clip-text sm:text-6xl mb-3">
             Explore,
             <span className="block  bg-clip-text ">Shop,</span>
             <span className="block bg-clip-text sm:pb-2 ">Repeat again</span>

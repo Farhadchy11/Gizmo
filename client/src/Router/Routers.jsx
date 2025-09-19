@@ -8,7 +8,6 @@ import Cart from "../components/Cart/Cart.jsx";
 import Payment from "../components/Payment/Payment.jsx";
 import UserHome from "../components/Dashboard/UserHome/UserHome.jsx";
 import AllUsers from "../Outlet/Dashboard/Allusers.jsx";
-import Admindash from "../components/Admindash/Admindash.jsx";
 import Outlet from "../Outlet/Outlet.jsx";
 import Dashboard from "../Outlet/Dashboard/Dashboard.jsx";
 
@@ -54,10 +53,6 @@ const Routers = createBrowserRouter([
       {
         path: "payments",
         element: <Payment></Payment>,
-      },
-      {
-        path: "Admindash",
-        element: <Admindash></Admindash>,
       },
       {
         path: "UserHome",

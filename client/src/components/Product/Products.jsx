@@ -8,7 +8,7 @@ const Products = () => {
   const [categories, setCategories] = useState(["all"]);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [priceLimit, setPriceLimit] = useState(30000);
+  const [priceLimit, setPriceLimit] = useState(300);
 
   useEffect(() => {
     const uniqueCategories = [
@@ -54,7 +54,7 @@ const Products = () => {
           <input
             type="range"
             min="0"
-            max="100000"
+            max="2000"
             value={priceLimit}
             onChange={(e) => setPriceLimit(Number(e.target.value))}
             class="w-full"

@@ -1,51 +1,10 @@
-//import axios from "axios";
 import useAxiosSecure from "../../Hooks/useAxiosSecure.jsx";
-//import useAdmin from "../../Hooks/useAdmin.jsx";
 import { useState, useEffect } from "react";
-//import { useQuery } from "@tanstack/react-query";
-//import React from 'react';
-//import useAxiosSecur from "../../../hooks/useAxiosSecur";
-//import { Trash, User, UserCheck } from "lucide-react";
-//import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
-   const axiosSecure = useAxiosSecure()
-  
-  //const [loading, setLoading] = useState(true);
-  //const [error, setError] = useState(null);
-  // State to trigger refetch
+  const axiosSecure = useAxiosSecure();
   const [refetch, setRefetchTrigger] = useState(0);
-
-  //   axios.interceptors.request.use(
-  //     (config) => {
-  //       const token = localStorage.getItem("access-token");
-  //       console.log(token);
-  //       if (token) {
-  //         config.headers.Authorization = `Bearer ${token}`;
-  //       }
-  //       return config;
-  //     },
-  //     (error) => {
-  //       return Promise.reject(error);
-  //     }
-  //   );
-  // useEffect(() => {
-  //         const fetchData = async () => {
-  //        //   setLoading(true);
-  //          // setError(null); // Clear previous errors
-  //           try {
-  //             const response = await axios.get('http://localhost:5050/users');
-  //             setData(response.data);
-  //            // const result = await response.json();
-  //            // setData(result);
-  //           } catch (err) {
-  //             //setError(err);
-  //           console.log(err);
-  //         };
-  //         fetchData();
-
-  //       }, [refetch])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,8 +14,6 @@ const AllUsers = () => {
         );
         setUsers(response.data);
         console.log(response.data);
-        // const result = await response.json();
-        // setData(result);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -67,68 +24,21 @@ const AllUsers = () => {
   const refetchData = () => {
     setRefetchTrigger((prev) => prev + 1);
   };
-  //   const axiosSecure = useAxiosSecur();
-  //   const { data: users = [], refetch } = useQuery({
-  //     queryKey: ["users"],
-  //     queryFn: async () => {
-  //       const res = await axiosSecure.get("/users", {
-  //         headers: {
-  //           authorization: `Bearer ${localStorage.getItem("access-token")}`,
-  //         },
-  //       });
-  //       return res.data;
-  //     },
-  //   });
 
   const deleteUser = (id) => {
     const ids = id;
     console.log(ids);
-    //axios.delete(`http://localhost:5050/users/${ids}`).then((res) => {
-  axiosSecure
-      .delete("https://ecommerceserver-mocha.vercel.app/users", { data: { ids } })
+
+    axiosSecure
+      .delete("https://ecommerceserver-mocha.vercel.app/users", {
+        data: { ids },
+      })
       .then((res) => {
         if (res.data.deletedCount > 0) {
           refetch();
         }
       });
   };
-
-  //   const handleToggleAdmin = (user) => {
-  //     const newRole = user.role === "admin" ? "user" : "admin";
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: `Do you want to change this user to ${newRole}?`,
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#3085d6",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Yes, change it!",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         axiosSecure
-  //           .patch(`/users/role/${user._id}`, { role: newRole })
-  //           .then((res) => {
-  //             if (res.data.modifiedCount > 0) {
-  //               refetch();
-  //               Swal.fire({
-  //                 icon: "success",
-  //                 title: `User role updated to ${newRole}`,
-  //                 position: "top-end",
-  //                 showConfirmButton: false,
-  //                 timer: 2000,
-  //               });
-  //             }
-  //           })
-  //           .catch((error) => {
-  //             Swal.fire({
-  //               icon: "error",
-  //               title: "Something went wrong!",
-  //               text: error.message,
-  //             });
-  //           });
-  //       }
-  //     });
-  //   };
 
   return (
     <div className="p-6">
@@ -149,47 +59,12 @@ const AllUsers = () => {
           <tbody>
             {users.map((user) => (
               <tr key={user._id} className="border-t  transition-all">
-                {/* <td className="p-3">
-                  <img
-                    src={user.image}
-                    alt={user.name}
-                    className="w-12 h-12 object-cover mx-auto rounded-full"
-                  />
-                </td> */}
                 <td className="p-3 text-sm md:text-base">{user.name}</td>
-                {/* <td className="p-3 text-sm text-yellow-400 font-bold md:text-base">
-                  {user.dateAdded}
-                </td> */}
+
                 <td className="p-3 text-sm md:text-base">{user.email}</td>
-                {/* <td className="p-3 text-sm font-bold md:text-base flex items-center justify-center space-x-2">
-                  {user.role === "admin" ? (
-                    <UserCheck size={16} className="text-green-500" />
-                  ) : (
-                    <User size={16} className="text-gray-500" />
-                  )}
-                  <span>{user.role === "admin" ? "Admin" : "User"}</span>
-                </td> */}
-                {/* <td className="p-3 text-sm md:text-base">
-                  <div className="flex items-center justify-center space-x-3">
-                    <button
-                      onClick={() => handleToggleAdmin(user)}
-                      className={`px-3 py-1 rounded text-white font-bold transition-all ${
-                        user.role === "admin"
-                          ? "bg-red-500 hover:bg-red-600"
-                          : "bg-blue-500 hover:bg-blue-600"
-                      }`}
-                    >
-                      {user.role === "admin" ? "Remove Admin" : "Make Admin"}
-                    </button>
-                  </div>
-                </td> */}
+
                 <td className="p-3 text-sm md:text-base">
-                  <button
-                    onClick={() => deleteUser(user._id)}
-                    // className="p-2 bg-red-500 rounded text-white hover:bg-red-600 transition-all"
-                  >
-                    delete
-                  </button>
+                  <button onClick={() => deleteUser(user._id)}>delete</button>
                 </td>
               </tr>
             ))}
