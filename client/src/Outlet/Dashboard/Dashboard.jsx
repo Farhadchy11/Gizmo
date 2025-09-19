@@ -2,10 +2,8 @@ import { AuthContext } from "../../Providers/AuthProvider.jsx";
 import { useContext } from "react";
 import { MdDashboard } from "react-icons/md";
 import { FiHome, FiLogOut } from "react-icons/fi";
-
 import { FaShoppingCart } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin.jsx";
-
 import { Link, Outlet } from "react-router-dom";
 
 const Sidebar = () => {

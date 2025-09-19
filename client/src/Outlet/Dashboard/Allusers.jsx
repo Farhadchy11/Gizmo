@@ -26,12 +26,12 @@ const AllUsers = () => {
   };
 
   const deleteUser = (id) => {
-    const ids = id;
+    const userId = id;
     console.log(ids);
 
     axiosSecure
       .delete("https://ecommerceserver-mocha.vercel.app/users", {
-        data: { ids },
+        data: { userId },
       })
       .then((res) => {
         if (res.data.deletedCount > 0) {
