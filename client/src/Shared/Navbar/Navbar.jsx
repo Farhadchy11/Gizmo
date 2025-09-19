@@ -14,7 +14,7 @@ const Navbar = () => {
         console.log("User logged out");
       })
       .catch((error) => {
-        console.error("Logout error:", error);
+        console.log("Logout error:", error);
       });
   };
 
@@ -84,7 +84,6 @@ const Navbar = () => {
                 to="/loginForm"
                 className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
               >
-                {/* <FiUser className="w-4 h-4" /> */}
                 <span>Login</span>
               </Link>
             )}
