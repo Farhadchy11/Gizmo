@@ -25,17 +25,15 @@ const cartSlice = createSlice({
         state.items.push({ ...product, quantity: 1 });
         const str1 = product.price;
         const price = Number(str1);
+        
         state.totalAmount += price;
       }
     },
 
     updateQuantity(state, action) {
       const { productID, quantity } = action.payload;
-
       const itemToUpdate = state.items.find((item) => item.id === productID);
-
       const difference = quantity - itemToUpdate.quantity;
-
       itemToUpdate.quantity = quantity;
       const str1 = itemToUpdate.price;
       const price = Number(str1);

@@ -16,6 +16,7 @@ const stripe = new Stripe(
 const uri = `mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata`;
 
 const client = new MongoClient(uri, {
+
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -115,9 +116,6 @@ async function run() {
 
 run();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

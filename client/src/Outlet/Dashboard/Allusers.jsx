@@ -13,7 +13,6 @@ const AllUsers = () => {
           "https://ecommerceserver-mocha.vercel.app/allusers"
         );
         setUsers(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -27,7 +26,6 @@ const AllUsers = () => {
 
   const deleteUser = (id) => {
     const userId = id;
-    console.log(ids);
 
     axiosSecure
       .delete("https://ecommerceserver-mocha.vercel.app/users", {
@@ -58,7 +56,7 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user._id} className="border-t  transition-all">
+              <tr key={user._id} className="border-t transition-all">
                 <td className="p-3 text-sm md:text-base">{user.name}</td>
 
                 <td className="p-3 text-sm md:text-base">{user.email}</td>

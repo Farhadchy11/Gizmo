@@ -5,7 +5,6 @@ import LoginForm from "../components/LoginForm/LoginForm.jsx";
 import Products from "../components/Product/Products.jsx";
 import Categories from "../components/Home/Categories/Categories.jsx";
 import Cart from "../components/Cart/Cart.jsx";
-import Payment from "../components/Payment/Payment.jsx";
 import UserHome from "../components/Dashboard/UserHome/UserHome.jsx";
 import AllUsers from "../Outlet/Dashboard/Allusers.jsx";
 import Outlet from "../Outlet/Outlet.jsx";
@@ -49,10 +48,6 @@ const Routers = createBrowserRouter([
       {
         path: "allUsers",
         element: <AllUsers></AllUsers>,
-      },
-      {
-        path: "payments",
-        element: <Payment></Payment>,
       },
       {
         path: "UserHome",
