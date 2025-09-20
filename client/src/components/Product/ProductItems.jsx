@@ -19,7 +19,7 @@ const ProductItems = ({ pd }) => {
   return (
     <div
       key={pd.id}
-      class="mx-auto border border-gray-300 shadow-md bg-white sm:pb-5 "
+      class="mx-auto border border-gray-300 shadow-md bg-white pb-4 sm:pb-5 "
     >
       <Link
         to={`/product/${pd.id}`}

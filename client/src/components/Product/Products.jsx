@@ -63,7 +63,7 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 mx-auto  justify-between gap-y-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-3 mx-auto justify-between gap-y-4 ">
         {filteredProducts.map((pd) => (
           <ProductItems pd={pd} />
         ))}
