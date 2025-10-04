@@ -28,7 +28,7 @@ const RegisterForm = () => {
               email: user.email,
             };
             axios
-              .post("https://ecommerceserver-mocha.vercel.app/users", userInfo)
+              .post("https://gizmo-taupe.vercel.app/users", userInfo)
               .then((res) => {
                 console.log(res, "User registration response");
                 if (res.data.insertedId) {

@@ -10,7 +10,7 @@ const AllUsers = () => {
     const fetchData = async () => {
       try {
         const response = await axiosSecure.get(
-          "https://ecommerceserver-mocha.vercel.app/allusers"
+          "https://gizmo-taupe.vercel.app/allusers"
         );
         setUsers(response.data);
       } catch (error) {
