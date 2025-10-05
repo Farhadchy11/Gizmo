@@ -23,7 +23,7 @@ const CheckoutForm = () => {
       const fetchData = async () => {
         try {
           const res = await axios.post(
-            "https://ecommerceserver-mocha.vercel.app/create-payment-intent",
+            "https://gizmo-taupe.vercel.app/create-payment-intent",
             { totalPrice }
           );
           const clientSecret = res.data.clientSecret;
@@ -59,17 +59,19 @@ const CheckoutForm = () => {
 
     if (error) {
       console.log("[Payment Error]", error);
+
       return;
     }
 
     console.log("[PaymentMethod]", paymentMethod);
+
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
           billing_details: {
-            name: user?.displayName,
-            email: user?.email,
+            name: "farhad",
+            email: "farhad@example.com",
           },
         },
       });
@@ -87,7 +89,7 @@ const CheckoutForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2 class="pb-2">Complete Your Payment</h2>
+        <h2>Complete Your Payment</h2>
 
         <input
           type="text"
@@ -125,7 +127,7 @@ const CheckoutForm = () => {
           />
         </div>
 
-        <button type="submit" class="pt-2">Pay</button>
+        <button type="submit">Pay</button>
 
         {cardError && (
           <p className="text-red-500 text-sm text-center">{cardError}</p>
