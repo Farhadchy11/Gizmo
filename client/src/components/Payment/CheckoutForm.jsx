@@ -9,14 +9,10 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useContext(AuthContext);
-  console.log("User from context:", user);
   const totalPrice = useSelector(selectCartTotalAmount);
-  console.log("Total Price:", totalPrice);
   const [clientSecret, setClientSecret] = useState("");
-  console.log("Client Secret state:", clientSecret);
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
-
   const [formData, setFormData] = useState({
     address: "",
     phone: "",
@@ -91,7 +87,7 @@ const CheckoutForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>Complete Your Payment</h2>
+        <h2 class="pb-2">Complete Your Payment</h2>
 
         <input
           type="text"
@@ -129,7 +125,7 @@ const CheckoutForm = () => {
           />
         </div>
 
-        <button type="submit">Pay</button>
+        <button type="submit" class="pt-2">Pay</button>
 
         {cardError && (
           <p className="text-red-500 text-sm text-center">{cardError}</p>

@@ -8,8 +8,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   return (
-    <div>
-      <h1>PLS PAY</h1>
+    <div class="flex justify-center items-center h-screen">
       <Elements stripe={stripePromise}>
         <CheckoutForm />
       </Elements>

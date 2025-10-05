@@ -18,9 +18,9 @@ const Cart = () => {
         <h1> Subtotal:</h1>
         <h1>${totalPrice}</h1>
       </div>
-       <Link to={"/dashboard/payments"}>
-          <button class="bg-black text-white p-2">Proceed to checkout</button>
-        </Link>
+      <Link to={"/Payment"}>
+        <button class="bg-black text-white p-2">Proceed to checkout</button>
+      </Link>
     </div>
   );
 };
