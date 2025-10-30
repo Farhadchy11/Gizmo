@@ -16,7 +16,6 @@ const stripe = new Stripe(
 const uri = `mongodb+srv://farhadchy500:farhad140@clusterdata.cmjpztk.mongodb.net/?retryWrites=true&w=majority&appName=Clusterdata`;
 
 const client = new MongoClient(uri, {
-
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -27,6 +26,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     console.log("MongoDB Connected Successfully!");
+    const productCollection = client.db("ecommerce").collection("allproducts");
     const userCollection = client.db("ecommerce").collection("users");
 
     app.post("/jwt", async (req, res) => {
@@ -52,7 +52,7 @@ async function run() {
     const verifyAdmin = async (req, res, next) => {
       const email = req.decoded.email;
       const query = { email };
-      const user = await usersCollection.findOne(query);
+      const user = await userCollection.findOne(query);
       const isAdmin = user?.role === "admin";
       if (!isAdmin) {
         return res.status(403).send({ message: "forbidden access" });
@@ -71,7 +71,13 @@ async function run() {
       }
     });
 
-    app.get("/user/admin/:email", async (req, res) => {
+    app.post("/addproduct",verifyToken,verifyAdmin, async (req, res) => {
+      const item = req.body;
+      const result = await productCollection.insertOne(item);
+      res.send(result);
+    });
+
+    app.get("/user/admin/:email",verifyToken, async (req, res) => {
       const email = req.params.email;
       console.log("email:", email);
       const query = { email: email };
@@ -84,14 +90,27 @@ async function run() {
       res.send({ admin });
     });
 
-    app.get("/allusers", verifyToken, verifyAdmin, async (req, res) => {
-      const result = await userCollection.find().toArray();
+    app.get("/products", async (req, res) => {
+      const result = await productCollection.find().toArray();
       res.send(result);
     });
 
-    app.post("/create-payment-intent", async (req, res) => {
-      const { totalPrice } = req.body;
-      const amount = parseInt(totalPrice * 100); // converting to paisa/cent
+    app.get("/user", verifyToken, verifyAdmin, async (req, res) => {
+      const result = await userCollection.find().toArray();
+      res.send(result);
+    });
+   
+
+    app.get("/products/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await productCollection.findOne(query);
+      res.send(result);
+    });
+
+    app.post("/create-payment-intent", verifyToken, async (req, res) => {
+      const { totalAmount } = req.body;
+      const amount = parseInt(totalAmount * 100); // converting to cent
 
       const paymentIntent = await stripe.paymentIntents.create({
         amount: amount,
@@ -103,19 +122,26 @@ async function run() {
       });
     });
 
-    app.delete("/users/:id", verifyToken, verifyAdmin, async (req, res) => {
+    app.delete("/users/:id",verifyToken, verifyAdmin, async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
-      const result = await usersCollection.deleteOne(query);
+      const result = await userCollection.deleteOne(query);
       res.send(result);
     });
+
+    app.delete("/products/:id",verifyToken, verifyAdmin, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await productCollection.deleteOne(query);
+      res.send(result);
+    });
+
   } catch (error) {
     console.log("Database Connection Error:", error);
   }
 }
 
 run();
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

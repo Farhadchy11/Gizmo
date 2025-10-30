@@ -6,6 +6,7 @@ const useAdmin = () => {
   
   const { user } = useAuthContext();
   const [isAdmin, setIsAdmin] = useState(false);
+  console.log("User in useAdmin:", isAdmin);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {

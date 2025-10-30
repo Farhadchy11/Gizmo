@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosSecur = axios.create({
-  baseURL: `https://gizmo-taupe.vercel.app`,
+  baseURL: `http://localhost:5050`,
 });
 const useAxiosSecur = () => {
   axiosSecur.interceptors.request.use(
