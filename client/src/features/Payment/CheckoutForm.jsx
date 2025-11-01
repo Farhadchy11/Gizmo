@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext  } from "react";
 import { useSelector } from "react-redux";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { AuthContext } from "../../Hooks/AuthProvider.jsx";
+import { AuthContext } from "../../../Hooks/AuthProvider.jsx";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx";
 
 const CheckoutForm = () => {
   const { items } = useSelector((state) => state?.cart);
-   const axiosSecure = useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useContext(AuthContext);
