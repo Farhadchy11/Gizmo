@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext  } from "react";
 import { useSelector } from "react-redux";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { AuthContext } from "../../../Hooks/AuthProvider.jsx";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx";
+import { AuthContext } from "./../../Hooks/AuthProvider.jsx";
+import useAxiosSecure from "./../../Hooks/useAxiosSecure.jsx";
 
 const CheckoutForm = () => {
   const { items } = useSelector((state) => 
