@@ -1,4 +1,4 @@
-import { AuthContext } from "../../Hooks/AuthProvider.jsx";
+import { AuthContext } from "../../../Hooks/AuthProvider.jsx";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 
