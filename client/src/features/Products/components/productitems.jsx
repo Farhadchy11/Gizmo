@@ -50,4 +50,3 @@ const ProductItems = ({ pd }) => {
 };
 
 export default ProductItems;
-
