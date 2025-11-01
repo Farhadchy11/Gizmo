@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGetProducts } from "../../hooks/useGetProducts.jsx";
+import { useGetProducts } from "../../Hooks/useGetProducts.jsx";
 import ProductItems from "../../features/products/components/productItems.jsx";
 
 const Products = () => {
