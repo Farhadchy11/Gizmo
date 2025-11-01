@@ -1,4 +1,4 @@
-import useAxiosSecure from "../../Hooks/useAxiosSecure.jsx";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx";
 import { useState, useEffect } from "react";
 
 const AllUsers = () => {

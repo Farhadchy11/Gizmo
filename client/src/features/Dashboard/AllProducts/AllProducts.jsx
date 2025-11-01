@@ -1,6 +1,6 @@
 import useAxiosSecure from "../../Hooks/useAxiosSecure.jsx";
 import { FaDeleteLeft } from "react-icons/fa6";
-import { useGetProducts } from "../../Hooks/useGetProducts.jsx";
+import { useGetProducts } from "../../../Hooks/useGetProducts.jsx";
 
 const AllProducts = () => {
   const axiosSecure = useAxiosSecure();

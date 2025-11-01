@@ -1,4 +1,4 @@
-import useAxiosSecure from "../../Hooks/useAxiosSecure.jsx";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx";
 
 const AddProducts = () => {
   const axiosSecure = useAxiosSecure();
