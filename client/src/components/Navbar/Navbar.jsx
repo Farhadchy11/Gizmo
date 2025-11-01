@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { AuthContext } from "../../hooks/AuthProvider.jsx";
+import { AuthContext } from "../../Hooks/AuthProvider.jsx";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
