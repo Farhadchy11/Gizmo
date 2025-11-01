@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { selectCartTotalAmount } from "../Cart/cartSlice.jsx";
-import { AuthContext } from "../../Providers/AuthProvider.jsx";
+import { AuthContext } from "../Providers/AuthProvider.jsx";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
