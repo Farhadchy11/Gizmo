@@ -1,4 +1,4 @@
-import { AuthContext } from "../../hooks/AuthProvider.jsx";
+import { AuthContext } from "../../Hooks/AuthProvider.jsx";
 import { useContext } from "react";
 import { MdDashboard } from "react-icons/md";
 import { FiHome, FiLogOut } from "react-icons/fi";

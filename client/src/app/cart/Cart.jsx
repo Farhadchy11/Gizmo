@@ -1,4 +1,4 @@
-import { AuthContext } from "../../hooks/AuthProvider.jsx";
+import { AuthContext } from "../../Hooks/AuthProvider.jsx";
 import { useContext } from "react";
 import CartItems from "../../features/Cart/CartItems.jsx";
 import { useSelector } from "react-redux";
