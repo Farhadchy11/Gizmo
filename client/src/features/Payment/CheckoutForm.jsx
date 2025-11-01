@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useSelector } from "react-redux";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { AuthContext } from "../../hooks/AuthProvider.jsx";
+import { AuthContext } from "../../Hooks/AuthProvider.jsx";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
