@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../home/Home.jsx";
-import ProductsDetailsPage from "../products/ProductsDetailsPage.jsx";
+const Products = lazy(() => import("../products/products.jsx"));
 import Outlet from "../Outlet/Outlet.jsx";
 import { Suspense, lazy } from "react";
 const Products = lazy(() => import("../products/products.jsx"));
