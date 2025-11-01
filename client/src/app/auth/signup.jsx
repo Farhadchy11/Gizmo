@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../../hooks/AuthProvider.jsx";
+import { AuthContext } from "../hooks/AuthProvider.jsx";
 import { updateProfile } from "firebase/auth";
 
 const Signup = () => {
