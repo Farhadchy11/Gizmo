@@ -1,14 +1,15 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext  } from "react";
 import { useSelector } from "react-redux";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
 import { AuthContext } from "../../Hooks/AuthProvider.jsx";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx";
 
 const CheckoutForm = () => {
+  const { items } = useSelector((state) => state?.cart);
+   const axiosSecure = useAxiosSecure();
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useContext(AuthContext);
-  console.log(user?.displayName);
   const [clientSecret, setClientSecret] = useState("");
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
@@ -17,18 +18,19 @@ const CheckoutForm = () => {
     phone: "",
   });
 
-  const { totalAmount } = useSelector((state) => state?.cart);
+  const totalAmount = items.reduce(
+    (acc, item) => acc + item.price * Number(item.quantity),
+    0
+  );
 
   useEffect(() => {
     if (totalAmount > 0) {
       const fetchData = async () => {
         try {
-          const res = await axios.post(
+          const res = await axiosSecure.post(
             "https://gizmo-taupe.vercel.app/create-payment-intent",
             { totalAmount }
           );
-          const clientSecret = res.data.clientSecret;
-          console.log("Client Secret fetch:", clientSecret);
           setClientSecret(res.data.clientSecret);
         } catch (e) {
           console.log("Error fetching payment intent:", e);
@@ -36,7 +38,7 @@ const CheckoutForm = () => {
       };
       fetchData();
     }
-  }, [axios, totalAmount]);
+  }, [axiosSecure, totalAmount]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -59,14 +61,11 @@ const CheckoutForm = () => {
 
     if (error) {
       console.log("[Payment Error]", error);
-
       return;
     }
 
-    console.log("[PaymentMethod]", paymentMethod);
-
     const { paymentIntent, error: confirmError } =
-      await stripe.couser?.displayNamenfirmCardPayment(clientSecret, {
+      await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
           billing_details: {
