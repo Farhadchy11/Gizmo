@@ -28,7 +28,7 @@ const Signup = () => {
               email: user.email,
             };
             axios
-              .post("http://localhost:5050/users", userInfo)
+              .post("https://gizmo-taupe.vercel.app/users", userInfo)
               .then((res) => {
                 console.log(res, "User registration response");
                 if (res.data.insertedId) {

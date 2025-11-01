@@ -10,7 +10,7 @@ const AllProducts = () => {
   const deleteProduct = (id) => {
     const productId = id;
     axiosSecure
-      .delete(`http://localhost:5050/products/${productId}`)
+      .delete(`https://gizmo-taupe.vercel.app/products/${productId}`)
       .then((res) => {
         if (res.data.deletedCount > 0) {
         }

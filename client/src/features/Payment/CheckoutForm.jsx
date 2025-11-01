@@ -24,7 +24,7 @@ const CheckoutForm = () => {
       const fetchData = async () => {
         try {
           const res = await axios.post(
-            "http://localhost:5050/create-payment-intent",
+            "https://gizmo-taupe.vercel.app/create-payment-intent",
             { totalAmount }
           );
           const clientSecret = res.data.clientSecret;

@@ -77,6 +77,20 @@ async function run() {
       res.send(result);
     });
 
+     app.post("/create-payment-intent", verifyToken, async (req, res) => {
+      const { totalAmount } = req.body;
+      const amount = parseInt(totalAmount * 100); // converting to cent
+
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: "usd",
+        payment_method_types: ["card"],
+      });
+      res.send({
+        clientSecret: paymentIntent.client_secret,
+      });
+    });
+
     app.get("/user/admin/:email",verifyToken, async (req, res) => {
       const email = req.params.email;
       console.log("email:", email);
@@ -108,19 +122,6 @@ async function run() {
       res.send(result);
     });
 
-    app.post("/create-payment-intent", verifyToken, async (req, res) => {
-      const { totalAmount } = req.body;
-      const amount = parseInt(totalAmount * 100); // converting to cent
-
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: amount,
-        currency: "usd",
-        payment_method_types: ["card"],
-      });
-      res.send({
-        clientSecret: paymentIntent.client_secret,
-      });
-    });
 
     app.delete("/users/:id",verifyToken, verifyAdmin, async (req, res) => {
       const id = req.params.id;

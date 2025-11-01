@@ -29,7 +29,7 @@ const ProductItems = ({ pd }) => {
           alignItems: "center",
         }}
       >
-        <img src={pd.imgSrc} loading="lazy" class=" max-h-50 mx-auto  object-scale-down " />
+        <img src={pd.imgSrc}  class=" max-h-50 mx-auto  object-scale-down " />
       </Link>
       <div class="text-center mt-10 px-5 text-black mx-auto">
         <h3 class="text-lg font-medium mb-1">{pd.title}</h3>

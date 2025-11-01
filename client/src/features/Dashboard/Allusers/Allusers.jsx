@@ -9,7 +9,7 @@ const AllUsers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosSecure.get("http://localhost:5050/user");
+        const response = await axiosSecure.get("https://gizmo-taupe.vercel.app/user");
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
