@@ -5,7 +5,8 @@ import { AuthContext } from "../../../Hooks/AuthProvider.jsx";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx";
 
 const CheckoutForm = () => {
-  const { items } = useSelector((state) => state?.cart);
+  const { items } = useSelector((state) => 
+    state?.cart);
     const axiosSecure = useAxiosSecure();
   const stripe = useStripe();
   const elements = useElements();
