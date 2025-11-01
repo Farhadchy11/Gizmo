@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
         console.log(currentUser.email);
         const userInfo = { email: currentUser.email };
         axios
-          .post("http://localhost:5050/jwt", userInfo)
+          .post("https://gizmo-taupe.vercel.app/jwt", userInfo)
           .then((res) => {
             console.log("JWT Response:", res.data.token);
             if (res.data.token) {

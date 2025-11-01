@@ -75,7 +75,7 @@ const Routers = createBrowserRouter([
         path: "/product/:id",
         element: <ProductsDetailsPage />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5050/products/${params.id}`),
+          fetch(`https://gizmo-taupe.vercel.app/products/${params.id}`),
       },
     ],
   },
