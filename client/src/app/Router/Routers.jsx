@@ -3,7 +3,7 @@ import Home from "../home/Home.jsx";
 import ProductsDetailsPage from "../products/ProductsDetailsPage.jsx";
 import Outlet from "../Outlet/Outlet.jsx";
 import { Suspense, lazy } from "react";
-const Products = lazy(() => import("../products/products.jsx"));
+const Products = lazy(() => import("../products/Products.jsx"));
 const Cart = lazy(() => import("../cart/Cart.jsx"));
 const Signin = lazy(() => import("../auth/signin.jsx"));
 const Signup = lazy(() => import("../auth/signup.jsx"));
