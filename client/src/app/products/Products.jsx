@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useGetProducts } from "../../Hooks/useGetProducts.jsx";
-import ProductItems from "../../features/products/components/productItems.jsx";
+import ProductItems from "../../features/products/components/productitems.jsx";
 
 const Products = () => {
   const { data: products, isLoading, isError, error } = useGetProducts();
